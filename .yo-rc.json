@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "de.wirvsvirus.app",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "wirvsvirus",
+    "packageName": "de.wirvsvirus.app",
+    "packageFolder": "de/wirvsvirus/app",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YzJiNTQxOTJlZmU4ZDYyZmNlNmM4NzhmOWVjMTlhODZiMmFhNDEzNmY3NjFlM2U3M2M3NmJjODQ4M2UxM2M0ZjU4YzNhNDIxNzI4NjlhNTJjZGVhYTNjMzY0MzQxMTIyMzgxM2ZiMjczMDFiMTc4Y2FjZDllYzZhNGViNDJlYWI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1584744385524,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": ["de"],
+    "blueprints": []
+  }
+}
