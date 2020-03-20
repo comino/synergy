@@ -1,0 +1,31 @@
+{
+  "wirvsvirusApp": {
+    "challenge": {
+      "home": {
+        "title": "Challenges",
+        "createLabel": "Challenge erstellen",
+        "createOrEditLabel": "Challenge erstellen oder bearbeiten",
+        "notFound": "No Challenges found"
+      },
+      "created": "Challenge erstellt mit ID {{ param }}",
+      "updated": "Challenge aktualisiert mit ID {{ param }}",
+      "deleted": "Challenge gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Challenge {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Challenge"
+      },
+      "name": "Name",
+      "problems": "Problems",
+      "description": "Description",
+      "solution": "Solution",
+      "targetAudience": "Target Audience",
+      "stakeHolder": "Stake Holder",
+      "slackChannel": "Slack Channel",
+      "ministryProject": "Ministry Project",
+      "category": "Category",
+      "idea": "Idea"
+    }
+  }
+}

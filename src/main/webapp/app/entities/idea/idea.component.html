@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wirvsvirusApp.idea.home.title">Ideas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-idea" [routerLink]="['/idea/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="wirvsvirusApp.idea.home.createLabel">
+            Create a new Idea
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="ideas?.length === 0">
+        <span jhiTranslate="wirvsvirusApp.idea.home.notFound">No ideas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="ideas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.idea.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.idea.description">Description</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let idea of ideas ;trackBy: trackId">
+                    <td><a [routerLink]="['/idea', idea.id, 'view']">{{ idea.id }}</a></td>
+                    <td>{{ idea.name }}</td>
+                    <td>{{ idea.description }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/idea', idea.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/idea', idea.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(idea)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

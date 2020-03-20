@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="challenge">
+            <h2><span jhiTranslate="wirvsvirusApp.challenge.detail.title">Challenge</span> {{ challenge.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.name">Name</span></dt>
+                <dd>
+                    <span>{{ challenge.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.problems">Problems</span></dt>
+                <dd>
+                    <span>{{ challenge.problems }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.description">Description</span></dt>
+                <dd>
+                    <span>{{ challenge.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.solution">Solution</span></dt>
+                <dd>
+                    <span>{{ challenge.solution }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.targetAudience">Target Audience</span></dt>
+                <dd>
+                    <span>{{ challenge.targetAudience }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.stakeHolder">Stake Holder</span></dt>
+                <dd>
+                    <span>{{ challenge.stakeHolder }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.slackChannel">Slack Channel</span></dt>
+                <dd>
+                    <span>{{ challenge.slackChannel }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.ministryProject">Ministry Project</span></dt>
+                <dd>
+                    <span>{{ challenge.ministryProject }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.category">Category</span></dt>
+                <dd>
+                    <span *ngFor="let category of challenge.categories; let last = last">
+                        <a [routerLink]="['/category', category?.id, 'view']">{{ category.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.challenge.idea">Idea</span></dt>
+                <dd>
+                    <span *ngFor="let idea of challenge.ideas; let last = last">
+                        <a [routerLink]="['/idea', idea?.id, 'view']">{{ idea.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/challenge', challenge.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

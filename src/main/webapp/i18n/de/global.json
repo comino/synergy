@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entitäten",
+        "skill": "Skill",
+        "userProfile": "User Profile",
+        "challenge": "Challenge",
+        "category": "Category",
+        "idea": "Idea",
+        "project": "Project",
+        "task": "Task",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

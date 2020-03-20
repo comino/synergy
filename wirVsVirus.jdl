@@ -1,0 +1,58 @@
+
+entity Skill {
+    name String
+}
+
+entity UserProfile {
+    github String
+    twitter String
+}
+
+entity Challenge {
+	name String
+    problems String
+    description String
+    solution String
+    targetAudience String
+    stakeHolder String
+    slackChannel String
+    ministryProject Boolean
+}
+
+entity Category{
+	name String
+}
+
+entity Idea {
+	name String
+    description String
+}
+
+entity Project {
+    name String
+    repository String
+    slack String
+    email String
+    description String
+    image ImageBlob
+}
+
+entity Task {
+    name String
+    description String
+}
+
+relationship ManyToMany {
+    UserProfile to Skill 
+    Project to UserProfile
+    Project to Skill
+    Project to Task
+    Task to Skill
+    Challenge to Category
+    Challenge to Idea
+}
+
+relationship OneToMany{
+    Idea to Project
+}
+

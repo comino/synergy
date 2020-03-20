@@ -1,0 +1,25 @@
+{
+  "wirvsvirusApp": {
+    "idea": {
+      "home": {
+        "title": "Ideas",
+        "createLabel": "Idea erstellen",
+        "createOrEditLabel": "Idea erstellen oder bearbeiten",
+        "notFound": "No Ideas found"
+      },
+      "created": "Idea erstellt mit ID {{ param }}",
+      "updated": "Idea aktualisiert mit ID {{ param }}",
+      "deleted": "Idea gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Idea {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Idea"
+      },
+      "name": "Name",
+      "description": "Description",
+      "project": "Project",
+      "challenge": "Challenge"
+    }
+  }
+}

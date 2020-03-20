@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="project">
+            <h2><span jhiTranslate="wirvsvirusApp.project.detail.title">Project</span> {{ project.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wirvsvirusApp.project.name">Name</span></dt>
+                <dd>
+                    <span>{{ project.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.repository">Repository</span></dt>
+                <dd>
+                    <span>{{ project.repository }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.slack">Slack</span></dt>
+                <dd>
+                    <span>{{ project.slack }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.email">Email</span></dt>
+                <dd>
+                    <span>{{ project.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.description">Description</span></dt>
+                <dd>
+                    <span>{{ project.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="project.image">
+                        <a (click)="openFile(project?.imageContentType!, project?.image)">
+                            <img [src]="'data:' + project.imageContentType + ';base64,' + project.image" style="max-width: 100%;" alt="project image"/>
+                        </a>
+                        {{ project.imageContentType }}, {{ byteSize(project.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.userProfile">User Profile</span></dt>
+                <dd>
+                    <span *ngFor="let userProfile of project.userProfiles; let last = last">
+                        <a [routerLink]="['/user-profile', userProfile?.id, 'view']">{{ userProfile.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.skill">Skill</span></dt>
+                <dd>
+                    <span *ngFor="let skill of project.skills; let last = last">
+                        <a [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.task">Task</span></dt>
+                <dd>
+                    <span *ngFor="let task of project.tasks; let last = last">
+                        <a [routerLink]="['/task', task?.id, 'view']">{{ task.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.project.idea">Idea</span></dt>
+                <dd>
+                    <div *ngIf="project.idea">
+                        <a [routerLink]="['/idea', project.idea?.id, 'view']">{{ project.idea?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project', project.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

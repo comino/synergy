@@ -1,0 +1,40 @@
+{
+    "name": "Idea",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "idea",
+            "relationshipName": "project"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "challenge",
+            "otherEntityRelationshipName": "idea",
+            "relationshipName": "challenge",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200320230100",
+    "entityTableName": "idea",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

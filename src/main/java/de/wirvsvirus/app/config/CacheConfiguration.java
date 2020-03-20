@@ -42,6 +42,28 @@ public class CacheConfiguration {
             createCache(cm, de.wirvsvirus.app.domain.User.class.getName());
             createCache(cm, de.wirvsvirus.app.domain.Authority.class.getName());
             createCache(cm, de.wirvsvirus.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, de.wirvsvirus.app.domain.Skill.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.Skill.class.getName() + ".userProfiles");
+            createCache(cm, de.wirvsvirus.app.domain.Skill.class.getName() + ".projects");
+            createCache(cm, de.wirvsvirus.app.domain.Skill.class.getName() + ".tasks");
+            createCache(cm, de.wirvsvirus.app.domain.UserProfile.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.UserProfile.class.getName() + ".skills");
+            createCache(cm, de.wirvsvirus.app.domain.UserProfile.class.getName() + ".projects");
+            createCache(cm, de.wirvsvirus.app.domain.Challenge.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.Challenge.class.getName() + ".categories");
+            createCache(cm, de.wirvsvirus.app.domain.Challenge.class.getName() + ".ideas");
+            createCache(cm, de.wirvsvirus.app.domain.Category.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.Category.class.getName() + ".challenges");
+            createCache(cm, de.wirvsvirus.app.domain.Idea.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.Idea.class.getName() + ".projects");
+            createCache(cm, de.wirvsvirus.app.domain.Idea.class.getName() + ".challenges");
+            createCache(cm, de.wirvsvirus.app.domain.Project.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.Project.class.getName() + ".userProfiles");
+            createCache(cm, de.wirvsvirus.app.domain.Project.class.getName() + ".skills");
+            createCache(cm, de.wirvsvirus.app.domain.Project.class.getName() + ".tasks");
+            createCache(cm, de.wirvsvirus.app.domain.Task.class.getName());
+            createCache(cm, de.wirvsvirus.app.domain.Task.class.getName() + ".skills");
+            createCache(cm, de.wirvsvirus.app.domain.Task.class.getName() + ".projects");
             // jhipster-needle-ehcache-add-entry
         };
     }
