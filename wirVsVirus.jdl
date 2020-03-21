@@ -1,11 +1,12 @@
-
 entity Skill {
     name String required 
 }
+
 entity UserProfile {
     github String
     twitter String
 }
+
 entity Challenge {
 	name String required
 	problems String required 
@@ -16,9 +17,11 @@ entity Challenge {
 	slackChannel String
 	ministryProject Boolean
 }
+
 entity Category {
 	name String
 }
+
 entity Idea {
 	name String required
     description String required
@@ -39,18 +42,18 @@ entity Task {
 }
 
 relationship ManyToMany {
-    UserProfile to Skill 
-    Project to User
-    Project to Skill
-    Project to Task
-    Task to Skill
-    Challenge to Category
+    UserProfile{skill(name)} to Skill {userProfile(github)}
+    Project{user(login)} to User{project(name)}
+    Project{skill(name)} to Skill{project(name)}
+    Project{task(name)} to Task{project(name)}
+    Task{skill(name)} to Skill{task(name)}
+    Challenge{category(name)} to Category{challenge(name)}
 }
 
 relationship OneToMany{
-    Idea to Project
-	  Challenge to Idea
-    UserProfile to Task
+    Idea to Project{idea(name)}
+	Challenge to Idea{challenge(name)}
+    UserProfile to Task{skill(name)}
 }
 
 relationship OneToOne {
