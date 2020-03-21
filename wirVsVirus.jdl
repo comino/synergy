@@ -51,7 +51,7 @@ relationship ManyToMany {
 
 relationship OneToMany{
     Idea{project(name)} to Project{idea(name)}
-	Challenge{idea(name)} to Idea{challenge(name)}
+	Challenge{idea(title)} to Idea{challenge(name)}
     UserProfile{task(name)} to Task{userProfile(github)}
 }
 
