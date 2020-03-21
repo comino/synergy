@@ -1,9 +1,12 @@
 package de.wirvsvirus.app.importdata;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
+import java.io.Writer;
 import java.util.HashSet;
 
 import org.apache.commons.csv.CSVFormat;
@@ -12,19 +15,53 @@ import org.apache.commons.csv.CSVRecord;
 public class ReadFileCsv {
 
 	public static void main(String[] args) throws Exception {
-		// TODO copy paste to
-		// wirvsvirus/src/main/resources/config/liquibase/fake-data/challenge.csv
-		printChallenges();
-		// wirvsvirus/src/main/resources/config/liquibase/fake-data/category.csv
-//		printCategories();
+		writeChallenges();
+		writeIdeas();
+		writeCategories();
 	}
 
-	private static void printChallenges() throws FileNotFoundException, IOException {
-		Reader in = new FileReader("Challenges-Alle Kategorien (Anischten).csv");
-		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
+	private static void writeChallenges() throws IOException, FileNotFoundException {
+		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(new FileReader("Challenges-Alle Kategorien (Anischten).csv"));
+		writeFile("src/main/resources/config/liquibase/fake-data/challenge.csv", printChallenges(records));
+	}
+
+	private static void writeIdeas() throws IOException, FileNotFoundException {
+		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(new FileReader("Challenges-Alle Kategorien (Anischten).csv"));
+		writeFile("src/main/resources/config/liquibase/fake-data/idea.csv", printIdeas(records));
+	}
+
+	private static void writeCategories() throws IOException, FileNotFoundException {
+		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(new FileReader("Challenges-Alle Kategorien (Anischten).csv"));
+		writeFile("src/main/resources/config/liquibase/fake-data/category.csv", printCategories(records));
+	}
+
+	private static void writeFile(String filename, StringBuilder printChallenges) throws IOException {
+		Writer append = new BufferedWriter(new FileWriter(new File(filename)));
+		append.append(printChallenges);
+		append.close();
+	}
+
+	private static StringBuilder printChallenges(Iterable<CSVRecord> records) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id;name\n");
+		HashSet<String> challenges = new HashSet<>();
+		for (CSVRecord record : records) {
+			String challenge = record.get(0);
+			if(challenge != null && !challenge.equals(""))
+				challenges.add(challenge);
+		}
 		int i = 1;
-		System.out.println(
-				"id;name;problems;description;solution;target_audience;stake_holder;slack_channel;ministry_project");
+		for (String challenge : challenges) {
+			sb.append(i).append(";").append(challenge).append("\n");
+			i++;
+		}
+		return sb;
+	}
+
+	private static StringBuilder printIdeas(Iterable<CSVRecord> records) {
+		int i = 1;
+		StringBuilder sb = new StringBuilder();
+		sb.append("id;title;problems;description;solution;target_audience;stake_holder;slack_channel;ministry_project\n");
 		for (CSVRecord record : records) {
 			String challenge = toString(record, 0);
 			String titel = toString(record, 1);
@@ -40,40 +77,23 @@ public class ReadFileCsv {
 				ministeriumsprojekt = "true";
 			else
 				ministeriumsprojekt = "false";
-//			String challenges = toString(record, 10);
-			// FIXME challenge, title different columns
-			// FIXME challenge should only have ONE name
-			// FIXME ideas should have all the other columns
-			System.out.println(i + ";" + // 0, id
-					shorten(challenge + ": " + titel) + ";" + // 1, name
-					probleme + ";" + // 2, problems
-					formulierungHerausforderung + ";" + // 3, description
-					loesungsansatz + ";" + // 4, solution
-//					kategorie + ";"+  //5, 
-					betroffenengruppe + ";" + // 5
-					stakeholder + ";" + // 6
-					challengeSlackChannel + ";" + // 7
-					ministeriumsprojekt); // 8
-//			System.out.println(challenge);
-//			System.out.println(titel);
-//			System.out.println(probleme);
-//			System.out.println(formulierungHerausforderung);
-//			System.out.println(loesungsansatz);
-//			System.out.println(kategorie);
-//			System.out.println(betroffenengruppe);
-//			System.out.println(stakeholder);
-//			System.out.println(challengeSlackChannel);
-//			System.out.println(ministeriumsprojekt);
-//			System.out.println(challenges);
+			sb.append(i).append(";").
+				append(titel).append(";").
+				append(probleme).append(";").
+				append(formulierungHerausforderung).append(";").
+				append(loesungsansatz).append(";").
+				append(betroffenengruppe).append(";").
+				append(stakeholder).append(";").
+				append(challengeSlackChannel).append(";").
+				append(ministeriumsprojekt).append("\n");
 			i++;
 		}
+		return sb;
 	}
 
-	private static void printCategories() throws FileNotFoundException, IOException {
-		Reader in = new FileReader("Challenges-Alle Kategorien (Anischten).csv");
-		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
-		System.out.println(
-				"id;name;problems;description;solution;target_audience;stake_holder;slack_channel;ministry_project");
+	private static StringBuilder printCategories(Iterable<CSVRecord> records) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id;name\n");
 		HashSet<String> kategorien = new HashSet<>();
 		for (CSVRecord record : records) {
 			String kategorie = record.get(5);
@@ -81,14 +101,13 @@ public class ReadFileCsv {
 			for (String kat : split)
 				if(kat != null && !kat.equals(""))
 					kategorien.add(kat);
-//			System.out.println(i + ";" + kategorie); 
-//			i++;
 		}
 		int i = 1;
 		for (String kategorie : kategorien) {
-			System.out.println(i + ";" + kategorie); 
+			sb.append(i).append(";").append(kategorie).append("\n");
 			i++;
 		}
+		return sb;
 	}
 
 	private static String toString(CSVRecord record, int nr) {

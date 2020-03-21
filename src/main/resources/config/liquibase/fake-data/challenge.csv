@@ -1,11 +1,49 @@
 id;name
-1;Tuna
-2;Idaho bi-directional
-3;Soft Chief Paradigm
-4;back up
-5;Handcrafted North Dakota Fish
-6;Wyoming PCI
-7;overriding
-8;Colorado utilize Awesome Wooden Chips
-9;Pitcairn Islands Antarctica (the territory South of 60 deg S) transmit
-10;transparent multi-byte
+1;Forschung: Wie kann Forschung zu Covid-19 ermöglicht werden?
+2;Hilfsmittelverteilung: Wie können medizinische Hilfsmittel sinnvoll verteilt werden?
+3;Kreativer Gesundheitsschutz: Welche kreativen Lösungen für Gesundheitsschutz brauchen wir zusätzlich?
+4;Patientenaustausch: Wie verbessern wir die Kommunikation und den Austausch zwischen Corona PatientInnen und Geheilten?
+5;Medizingeräteherstellung: Wie können wichtige medizinigsche Geräte und Hilfsmittel alternativ zB. durch 3D-Druck hergestellt werden?
+6;Nachbarschaftshilfe: Wie können wir über Helfer-Plattformen Nachbarschaftshilfe organisieren?
+7;Lebensnotwendige Dienstleistungen: Wie können wir notwendige Dienstleistungen (Ärztliche Leistungen, Handwerker, Verkauf von Waren, etc.) sicherstellen?
+8;Digitale Krankheits-Anamnese: Wie können wir auf digitalem/ virtuellem Krankheits-Anamnese durchführen und für Aufklärung sorgen?
+9;Staatliche Kommunikation: Wie kann der Staat in der Krise mit BürgerInnen kommunizieren?
+10;Flatten the Curve: Wie lässt sich die momentane Situation auf einen überschaubaren Zeitraum begrenzen?
+11;Haustiere: Wie gehen wir mit unseren Haustieren in Zeiten von Corona um?
+12;Home Office: Wie verbessern wir Home Office?
+13;e-Anträge: Wie können Anträge für finanzielle Unterstützungsmittel & Sicherstellung der Liquidität digital und vereinfacht aufbereitet werden?
+14;Lebensmittel-Matching: Wie können alle BürgerInnen mit Lebensmitteln versorgt werden?
+15;Landwirtschaft: Wie können wir die Landwirtschaft unterstützen?
+16;Daten: Wie können wir Daten besser aufbereiten und nutzen?
+17;Social Distancing: Wie können wir kreativ werden in Zeiten von Social Distancing?
+18;Vulnerable Gruppen: Wie können wir Angebote schaffen für besonders vulnerable Gruppen wie Obdachlose & Geflüchtete?
+19;Tauschplattform: Wie können Güter und Dienstleistungen so getauscht werden, dass alle ausreichend versorgt sind?
+20;Kreative Berufe: Wie können wir Menschen in kreativen Berufen unterstützen?
+21;Tafel-Reorganisation: Wie können wir aktuelle Herausforderungen der Tafeln (zB. Ausfall von Freiwilligen) meistern?
+22;e-Learning: Wie können wir Weiterbildungsmöglichkeiten/Online-Learning anbieten?
+23;Corona Tracking: Wie können Corona-infizierte/ getestete/ genesene Personen getrackt werden?
+24;Corona-Testprozesse: Wie optimieren wir Corona Testprozesse?
+25;Rechtliche Fragen: Wie können wir rechtlichen Fragen als Folge der Pandemie begegnen?
+26;Gamification: Wie können wir mit spielerischen Ansätzen der Krise begegnen?
+27;Infektionsfall-Übermittlung: Wie können Infektionsfälle rasch und effizient übermittelt werden?
+28;Supermarkt Status: Wie kommunizieren wir den Status in Supermärkten (Warenverfügbarkeit, Traffic...)?
+29;Medizinische Versorgung: Wie kann die medizinische Versorgung aufrechterhalten werden?
+30;Grenzkontrollen: Wie können wir Grenzkontrollen optimieren?
+31;Medizinisches Personal: Wie können wir medizinisches Personal unterstützen?
+32;Analoge Unterstützung: Wie können Personen (bes. SeniorInnen) ohne Internet-Zugang betreut und unterstützt werden?
+33;Öffentliche Verwaltung: Wie können wir öffentliche Verwaltung unterstützen, staatliche Dienstleistungen sicherstelllen & Demokratie stützen?
+34;ArbeiterInnenverteilung: Wie können ArbeiterInnen (bes. für die Ernte) effektiv verteilt werden?
+35;Finanzelle Unterstützung: Wie kann finanzielle Unterstützung für Selbstständige und kleine Betriebe vereinfacht werden?
+36;Verteilung von Helfern: Wie kann eine sinnvolle Verteilung von freiwilligen Helfern ermöglicht werden?
+37;Lokale Unternehmen: Wie können wir lokale Unternehmen fördern und vor der Insolvenz bewahren?
+38;e-Kulturangebote: Wie können wir kulturelle Angebote wie etwa Events, Museums- oder Theaterbesuche digital abbilden?
+39;Gefährdete Gruppen: Wie können wir besonders gefährdete Gruppen (bspw. häusliche Gewalt) identifizieren und unterstützen?
+40;Krisenkommunikation: Wie können wir sicher stellen, dass Fake-News entdeckt und validierte Information zur Verfügung steht?
+41;e-Sport: Wie können wir auch in Zeiten von Corona auf körperliche Gesundheit achten, Sport treiben, die Strandfigur sichern?
+42;Gesellschaftliche Fragen: Wie können wir Corona für die Lösung größerer gesellschaftlicher Fragen nutzen?
+43;Krisenbewältigung: Wie können wir bereits bestehende Plattformen, Apps usw. zur Krisenbewältigung verbessern?
+44;e-Kinderbetreuung: Wie können Eltern eine Kinderbetreuung in Zeiten von Social Distancing sicherstellen?
+45;Wirtschaftliche Auswirkungen: Wie können wirtschaftliche Folgen besser abgeschätzt werden, besonders bei KMUs?
+46;Generelle Kommunikation: Wie verbessern wir offizielle Kommunikation und Informationsweitergabe generell?
+47;Krankenhäuser: Wie können wir die Kapazitäten im Krankenhaus transparenter darstellen?
+48;Mental Health: Wie decken wir auch psychologische Betreuung auf digitalem Wege ab?
