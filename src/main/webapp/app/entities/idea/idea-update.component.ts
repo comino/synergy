@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IIdea, Idea } from 'app/shared/model/idea.model';
 import { IdeaService } from './idea.service';
+import { IChallenge } from 'app/shared/model/challenge.model';
+import { ChallengeService } from 'app/entities/challenge/challenge.service';
 
 @Component({
   selector: 'jhi-idea-update',
@@ -14,18 +16,27 @@ import { IdeaService } from './idea.service';
 })
 export class IdeaUpdateComponent implements OnInit {
   isSaving = false;
+  challenges: IChallenge[] = [];
 
   editForm = this.fb.group({
     id: [],
-    name: [],
-    description: []
+    name: [null, [Validators.required]],
+    description: [null, [Validators.required]],
+    challenge: []
   });
 
-  constructor(protected ideaService: IdeaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected ideaService: IdeaService,
+    protected challengeService: ChallengeService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ idea }) => {
       this.updateForm(idea);
+
+      this.challengeService.query().subscribe((res: HttpResponse<IChallenge[]>) => (this.challenges = res.body || []));
     });
   }
 
@@ -33,7 +44,8 @@ export class IdeaUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: idea.id,
       name: idea.name,
-      description: idea.description
+      description: idea.description,
+      challenge: idea.challenge
     });
   }
 
@@ -56,7 +68,8 @@ export class IdeaUpdateComponent implements OnInit {
       ...new Idea(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      description: this.editForm.get(['description'])!.value
+      description: this.editForm.get(['description'])!.value,
+      challenge: this.editForm.get(['challenge'])!.value
     };
   }
 
@@ -74,5 +87,9 @@ export class IdeaUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IChallenge): any {
+    return item.id;
   }
 }

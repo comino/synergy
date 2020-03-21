@@ -17,13 +17,13 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="problems" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="solution" type="varchar(255)">
                 <constraints nullable="true" />
@@ -56,17 +56,6 @@
         </createTable>
 
         <addPrimaryKey columnNames="challenge_id, category_id" tableName="challenge_category"/>
-        
-        <createTable tableName="challenge_idea">
-            <column name="idea_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="challenge_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="challenge_id, idea_id" tableName="challenge_idea"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

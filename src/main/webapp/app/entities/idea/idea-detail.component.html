@@ -16,6 +16,12 @@
                 <dd>
                     <span>{{ idea.description }}</span>
                 </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.challenge">Challenge</span></dt>
+                <dd>
+                    <div *ngIf="idea.challenge">
+                        <a [routerLink]="['/challenge', idea.challenge?.id, 'view']">{{ idea.challenge?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

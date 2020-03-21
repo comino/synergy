@@ -25,6 +25,7 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.userProfile.github">Github</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.userProfile.twitter">Twitter</span></th>
+                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.userProfile.user">User</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.userProfile.skill">Skill</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -34,6 +35,9 @@
                     <td><a [routerLink]="['/user-profile', userProfile.id, 'view']">{{ userProfile.id }}</a></td>
                     <td>{{ userProfile.github }}</td>
                     <td>{{ userProfile.twitter }}</td>
+                    <td>
+                        {{ userProfile.user?.id }}
+                    </td>
                     <td>
                         <span *ngFor="let skill of userProfile.skills; let last = last">
                             <a class="form-control-static" [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}

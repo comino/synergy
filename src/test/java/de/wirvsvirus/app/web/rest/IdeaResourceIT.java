@@ -118,6 +118,42 @@ public class IdeaResourceIT {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ideaRepository.findAll().size();
+        // set the field null
+        idea.setName(null);
+
+        // Create the Idea, which fails.
+
+        restIdeaMockMvc.perform(post("/api/ideas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(idea)))
+            .andExpect(status().isBadRequest());
+
+        List<Idea> ideaList = ideaRepository.findAll();
+        assertThat(ideaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDescriptionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ideaRepository.findAll().size();
+        // set the field null
+        idea.setDescription(null);
+
+        // Create the Idea, which fails.
+
+        restIdeaMockMvc.perform(post("/api/ideas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(idea)))
+            .andExpect(status().isBadRequest());
+
+        List<Idea> ideaList = ideaRepository.findAll();
+        assertThat(ideaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllIdeas() throws Exception {
         // Initialize the database
         ideaRepository.saveAndFlush(idea);

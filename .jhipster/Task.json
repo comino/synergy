@@ -20,6 +20,13 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "userProfile",
+            "otherEntityRelationshipName": "task",
+            "relationshipName": "userProfile",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipType": "many-to-many",
             "otherEntityName": "project",
             "otherEntityRelationshipName": "task",

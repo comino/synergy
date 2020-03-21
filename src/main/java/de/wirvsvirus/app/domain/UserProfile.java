@@ -1,6 +1,5 @@
 package de.wirvsvirus.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -31,17 +30,20 @@ public class UserProfile implements Serializable {
     @Column(name = "twitter")
     private String twitter;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
+    @OneToMany(mappedBy = "userProfile")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Task> tasks = new HashSet<>();
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "user_profile_skill",
                joinColumns = @JoinColumn(name = "user_profile_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "id"))
     private Set<Skill> skills = new HashSet<>();
-
-    @ManyToMany(mappedBy = "userProfiles")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JsonIgnore
-    private Set<Project> projects = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -78,6 +80,44 @@ public class UserProfile implements Serializable {
         this.twitter = twitter;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public UserProfile user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public UserProfile tasks(Set<Task> tasks) {
+        this.tasks = tasks;
+        return this;
+    }
+
+    public UserProfile addTask(Task task) {
+        this.tasks.add(task);
+        task.setUserProfile(this);
+        return this;
+    }
+
+    public UserProfile removeTask(Task task) {
+        this.tasks.remove(task);
+        task.setUserProfile(null);
+        return this;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public Set<Skill> getSkills() {
         return skills;
     }
@@ -101,31 +141,6 @@ public class UserProfile implements Serializable {
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
-    }
-
-    public Set<Project> getProjects() {
-        return projects;
-    }
-
-    public UserProfile projects(Set<Project> projects) {
-        this.projects = projects;
-        return this;
-    }
-
-    public UserProfile addProject(Project project) {
-        this.projects.add(project);
-        project.getUserProfiles().add(this);
-        return this;
-    }
-
-    public UserProfile removeProject(Project project) {
-        this.projects.remove(project);
-        project.getUserProfiles().remove(this);
-        return this;
-    }
-
-    public void setProjects(Set<Project> projects) {
-        this.projects = projects;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

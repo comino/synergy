@@ -12,20 +12,26 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "userProfile",
+            "relationshipName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "userProfile",
+            "relationshipName": "task"
+        },
+        {
             "relationshipType": "many-to-many",
             "otherEntityName": "skill",
             "otherEntityRelationshipName": "userProfile",
             "relationshipName": "skill",
             "otherEntityField": "id",
             "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "project",
-            "otherEntityRelationshipName": "userProfile",
-            "relationshipName": "project",
-            "otherEntityField": "id",
-            "ownerSide": false
         }
     ],
     "changelogDate": "20200320225800",

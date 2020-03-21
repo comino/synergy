@@ -49,10 +49,10 @@ public class Project implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "project_user_profile",
+    @JoinTable(name = "project_user",
                joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "user_profile_id", referencedColumnName = "id"))
-    private Set<UserProfile> userProfiles = new HashSet<>();
+               inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Set<User> users = new HashSet<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -172,29 +172,27 @@ public class Project implements Serializable {
         this.imageContentType = imageContentType;
     }
 
-    public Set<UserProfile> getUserProfiles() {
-        return userProfiles;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public Project userProfiles(Set<UserProfile> userProfiles) {
-        this.userProfiles = userProfiles;
+    public Project users(Set<User> users) {
+        this.users = users;
         return this;
     }
 
-    public Project addUserProfile(UserProfile userProfile) {
-        this.userProfiles.add(userProfile);
-        userProfile.getProjects().add(this);
+    public Project addUser(User user) {
+        this.users.add(user);
         return this;
     }
 
-    public Project removeUserProfile(UserProfile userProfile) {
-        this.userProfiles.remove(userProfile);
-        userProfile.getProjects().remove(this);
+    public Project removeUser(User user) {
+        this.users.remove(user);
         return this;
     }
 
-    public void setUserProfiles(Set<UserProfile> userProfiles) {
-        this.userProfiles = userProfiles;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public Set<Skill> getSkills() {

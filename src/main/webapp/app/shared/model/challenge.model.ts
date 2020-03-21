@@ -1,5 +1,5 @@
-import { ICategory } from 'app/shared/model/category.model';
 import { IIdea } from 'app/shared/model/idea.model';
+import { ICategory } from 'app/shared/model/category.model';
 
 export interface IChallenge {
   id?: number;
@@ -11,8 +11,8 @@ export interface IChallenge {
   stakeHolder?: string;
   slackChannel?: string;
   ministryProject?: boolean;
-  categories?: ICategory[];
   ideas?: IIdea[];
+  categories?: ICategory[];
 }
 
 export class Challenge implements IChallenge {
@@ -26,8 +26,8 @@ export class Challenge implements IChallenge {
     public stakeHolder?: string,
     public slackChannel?: string,
     public ministryProject?: boolean,
-    public categories?: ICategory[],
-    public ideas?: IIdea[]
+    public ideas?: IIdea[],
+    public categories?: ICategory[]
   ) {
     this.ministryProject = this.ministryProject || false;
   }

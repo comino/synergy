@@ -16,6 +16,10 @@
                 <dd>
                     <span>{{ userProfile.twitter }}</span>
                 </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.userProfile.user">User</span></dt>
+                <dd>
+                    {{ userProfile.user?.id }}
+                </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.userProfile.skill">Skill</span></dt>
                 <dd>
                     <span *ngFor="let skill of userProfile.skills; let last = last">

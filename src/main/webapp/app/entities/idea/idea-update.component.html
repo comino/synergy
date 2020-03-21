@@ -15,12 +15,32 @@
                     <label class="form-control-label" jhiTranslate="wirvsvirusApp.idea.name" for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
                            formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="wirvsvirusApp.idea.description" for="field_description">Description</label>
                     <input type="text" class="form-control" name="description" id="field_description"
                            formControlName="description"/>
+                    <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wirvsvirusApp.idea.challenge" for="field_challenge">Challenge</label>
+                    <select class="form-control" id="field_challenge" name="challenge" formControlName="challenge">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="challengeOption.id === editForm.get('challenge')!.value?.id ? editForm.get('challenge')!.value : challengeOption" *ngFor="let challengeOption of challenges; trackBy: trackById">{{ challengeOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

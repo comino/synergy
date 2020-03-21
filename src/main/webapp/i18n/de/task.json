@@ -19,6 +19,7 @@
       "name": "Name",
       "description": "Description",
       "skill": "Skill",
+      "userProfile": "User Profile",
       "project": "Project"
     }
   }

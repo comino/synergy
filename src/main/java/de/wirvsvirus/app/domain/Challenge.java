@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -24,13 +25,16 @@ public class Challenge implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "problems")
+    @NotNull
+    @Column(name = "problems", nullable = false)
     private String problems;
 
-    @Column(name = "description")
+    @NotNull
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "solution")
@@ -48,19 +52,16 @@ public class Challenge implements Serializable {
     @Column(name = "ministry_project")
     private Boolean ministryProject;
 
+    @OneToMany(mappedBy = "challenge")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Idea> ideas = new HashSet<>();
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "challenge_category",
                joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
     private Set<Category> categories = new HashSet<>();
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "challenge_idea",
-               joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "idea_id", referencedColumnName = "id"))
-    private Set<Idea> ideas = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -175,6 +176,31 @@ public class Challenge implements Serializable {
         this.ministryProject = ministryProject;
     }
 
+    public Set<Idea> getIdeas() {
+        return ideas;
+    }
+
+    public Challenge ideas(Set<Idea> ideas) {
+        this.ideas = ideas;
+        return this;
+    }
+
+    public Challenge addIdea(Idea idea) {
+        this.ideas.add(idea);
+        idea.setChallenge(this);
+        return this;
+    }
+
+    public Challenge removeIdea(Idea idea) {
+        this.ideas.remove(idea);
+        idea.setChallenge(null);
+        return this;
+    }
+
+    public void setIdeas(Set<Idea> ideas) {
+        this.ideas = ideas;
+    }
+
     public Set<Category> getCategories() {
         return categories;
     }
@@ -198,31 +224,6 @@ public class Challenge implements Serializable {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
-    }
-
-    public Set<Idea> getIdeas() {
-        return ideas;
-    }
-
-    public Challenge ideas(Set<Idea> ideas) {
-        this.ideas = ideas;
-        return this;
-    }
-
-    public Challenge addIdea(Idea idea) {
-        this.ideas.add(idea);
-        idea.getChallenges().add(this);
-        return this;
-    }
-
-    public Challenge removeIdea(Idea idea) {
-        this.ideas.remove(idea);
-        idea.getChallenges().remove(this);
-        return this;
-    }
-
-    public void setIdeas(Set<Idea> ideas) {
-        this.ideas = ideas;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

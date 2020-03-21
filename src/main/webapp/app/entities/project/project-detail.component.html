@@ -37,10 +37,10 @@
                         {{ project.imageContentType }}, {{ byteSize(project.image) }}
                     </div>
                 </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.project.userProfile">User Profile</span></dt>
+                <dt><span jhiTranslate="wirvsvirusApp.project.user">User</span></dt>
                 <dd>
-                    <span *ngFor="let userProfile of project.userProfiles; let last = last">
-                        <a [routerLink]="['/user-profile', userProfile?.id, 'view']">{{ userProfile.id }}</a>{{ last ? '' : ', ' }}
+                    <span *ngFor="let user of project.users; let last = last">
+                        {{ user.id }}{{ last ? '' : ', ' }}
                     </span>
                 </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.project.skill">Skill</span></dt>

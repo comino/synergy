@@ -17,7 +17,7 @@ export class SkillUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    name: []
+    name: [null, [Validators.required]]
   });
 
   constructor(protected skillService: SkillService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}

@@ -2,30 +2,26 @@
 entity Skill {
     name String required 
 }
-
 entity UserProfile {
     github String
     twitter String
 }
-
 entity Challenge {
-	name String
-    problems String
-    description String
-    solution String
-    targetAudience String
-    stakeHolder String
-    slackChannel String
-    ministryProject Boolean
+	name String required
+	problems String required 
+	description String required
+	solution String
+	targetAudience String
+	stakeHolder String
+	slackChannel String
+	ministryProject Boolean
 }
-
-entity Category{
+entity Category {
 	name String
 }
-
 entity Idea {
-	name String
-    description String
+	name String required
+    description String required
 }
 
 entity Project {
@@ -43,18 +39,21 @@ entity Task {
 }
 
 relationship ManyToMany {
-    User to Skill 
+    UserProfile to Skill 
     Project to User
     Project to Skill
     Project to Task
     Task to Skill
     Challenge to Category
-    Challenge to Idea
 }
 
 relationship OneToMany{
     Idea to Project
-    User to UserProfile
-    Task to User
+	  Challenge to Idea
+    UserProfile to Task
+}
+
+relationship OneToOne {
+	UserProfile to User
 }
 

@@ -1,4 +1,4 @@
-import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { IUser } from 'app/core/user/user.model';
 import { ISkill } from 'app/shared/model/skill.model';
 import { ITask } from 'app/shared/model/task.model';
 import { IIdea } from 'app/shared/model/idea.model';
@@ -12,7 +12,7 @@ export interface IProject {
   description?: string;
   imageContentType?: string;
   image?: any;
-  userProfiles?: IUserProfile[];
+  users?: IUser[];
   skills?: ISkill[];
   tasks?: ITask[];
   idea?: IIdea;
@@ -28,7 +28,7 @@ export class Project implements IProject {
     public description?: string,
     public imageContentType?: string,
     public image?: any,
-    public userProfiles?: IUserProfile[],
+    public users?: IUser[],
     public skills?: ISkill[],
     public tasks?: ITask[],
     public idea?: IIdea

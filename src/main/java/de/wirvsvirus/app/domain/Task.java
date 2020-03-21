@@ -1,6 +1,7 @@
 package de.wirvsvirus.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -37,6 +38,10 @@ public class Task implements Serializable {
                joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "id"))
     private Set<Skill> skills = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties("tasks")
+    private UserProfile userProfile;
 
     @ManyToMany(mappedBy = "tasks")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -101,6 +106,19 @@ public class Task implements Serializable {
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public Task userProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+        return this;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 
     public Set<Project> getProjects() {

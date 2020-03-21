@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -47,7 +48,7 @@ public class SkillResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/skills")
-    public ResponseEntity<Skill> createSkill(@RequestBody Skill skill) throws URISyntaxException {
+    public ResponseEntity<Skill> createSkill(@Valid @RequestBody Skill skill) throws URISyntaxException {
         log.debug("REST request to save Skill : {}", skill);
         if (skill.getId() != null) {
             throw new BadRequestAlertException("A new skill cannot already have an ID", ENTITY_NAME, "idexists");
@@ -68,7 +69,7 @@ public class SkillResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/skills")
-    public ResponseEntity<Skill> updateSkill(@RequestBody Skill skill) throws URISyntaxException {
+    public ResponseEntity<Skill> updateSkill(@Valid @RequestBody Skill skill) throws URISyntaxException {
         log.debug("REST request to update Skill : {}", skill);
         if (skill.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

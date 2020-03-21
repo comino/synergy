@@ -64,6 +64,10 @@ public class CacheConfiguration {
             createCache(cm, de.wirvsvirus.app.domain.Task.class.getName());
             createCache(cm, de.wirvsvirus.app.domain.Task.class.getName() + ".skills");
             createCache(cm, de.wirvsvirus.app.domain.Task.class.getName() + ".projects");
+            createCache(cm, de.wirvsvirus.app.domain.UserProfile.class.getName() + ".asignees");
+            createCache(cm, de.wirvsvirus.app.domain.UserProfile.class.getName() + ".creators");
+            createCache(cm, de.wirvsvirus.app.domain.Project.class.getName() + ".users");
+            createCache(cm, de.wirvsvirus.app.domain.UserProfile.class.getName() + ".tasks");
             // jhipster-needle-ehcache-add-entry
         };
     }

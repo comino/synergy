@@ -164,6 +164,60 @@ public class ChallengeResourceIT {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = challengeRepository.findAll().size();
+        // set the field null
+        challenge.setName(null);
+
+        // Create the Challenge, which fails.
+
+        restChallengeMockMvc.perform(post("/api/challenges")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(challenge)))
+            .andExpect(status().isBadRequest());
+
+        List<Challenge> challengeList = challengeRepository.findAll();
+        assertThat(challengeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkProblemsIsRequired() throws Exception {
+        int databaseSizeBeforeTest = challengeRepository.findAll().size();
+        // set the field null
+        challenge.setProblems(null);
+
+        // Create the Challenge, which fails.
+
+        restChallengeMockMvc.perform(post("/api/challenges")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(challenge)))
+            .andExpect(status().isBadRequest());
+
+        List<Challenge> challengeList = challengeRepository.findAll();
+        assertThat(challengeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDescriptionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = challengeRepository.findAll().size();
+        // set the field null
+        challenge.setDescription(null);
+
+        // Create the Challenge, which fails.
+
+        restChallengeMockMvc.perform(post("/api/challenges")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(challenge)))
+            .andExpect(status().isBadRequest());
+
+        List<Challenge> challengeList = challengeRepository.findAll();
+        assertThat(challengeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllChallenges() throws Exception {
         // Initialize the database
         challengeRepository.saveAndFlush(challenge);

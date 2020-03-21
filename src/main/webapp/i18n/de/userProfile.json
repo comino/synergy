@@ -18,8 +18,9 @@
       },
       "github": "Github",
       "twitter": "Twitter",
-      "skill": "Skill",
-      "project": "Project"
+      "user": "User",
+      "task": "Task",
+      "skill": "Skill"
     }
   }
 }

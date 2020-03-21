@@ -60,9 +60,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label jhiTranslate="wirvsvirusApp.project.userProfile" for="field_userProfiles">User Profile</label>
-                    <select class="form-control" id="field_userProfiles" multiple name="userProfiles" formControlName="userProfiles">
-                        <option [ngValue]="getSelected(editForm.get('userProfiles')!.value, userProfileOption)" *ngFor="let userProfileOption of userprofiles; trackBy: trackById">{{ userProfileOption.id }}</option>
+                    <label jhiTranslate="wirvsvirusApp.project.user" for="field_users">User</label>
+                    <select class="form-control" id="field_users" multiple name="users" formControlName="users">
+                        <option [ngValue]="getSelected(editForm.get('users')!.value, userOption)" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
                     </select>
                 </div>
 

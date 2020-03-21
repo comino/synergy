@@ -9,16 +9,16 @@
     <changeSet id="20200320230200-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="project_id"
-                                 baseTableName="project_user_profile"
-                                 constraintName="fk_project_user_profile_project_id"
+                                 baseTableName="project_user"
+                                 constraintName="fk_project_user_project_id"
                                  referencedColumnNames="id"
                                  referencedTableName="project"/>
 
-        <addForeignKeyConstraint baseColumnNames="user_profile_id"
-                                 baseTableName="project_user_profile"
-                                 constraintName="fk_project_user_profile_user_profile_id"
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="project_user"
+                                 constraintName="fk_project_user_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="user_profile"/>
+                                 referencedTableName="jhi_user"/>
         
         <addForeignKeyConstraint baseColumnNames="project_id"
                                  baseTableName="project_skill"

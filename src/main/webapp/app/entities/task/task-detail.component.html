@@ -22,6 +22,12 @@
                         <a [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.task.userProfile">User Profile</span></dt>
+                <dd>
+                    <div *ngIf="task.userProfile">
+                        <a [routerLink]="['/user-profile', task.userProfile?.id, 'view']">{{ task.userProfile?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

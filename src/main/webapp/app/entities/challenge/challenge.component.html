@@ -32,7 +32,6 @@
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.slackChannel">Slack Channel</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.ministryProject">Ministry Project</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.category">Category</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.idea">Idea</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -50,11 +49,6 @@
                     <td>
                         <span *ngFor="let category of challenge.categories; let last = last">
                             <a class="form-control-static" [routerLink]="['/category', category?.id, 'view']">{{ category.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
-                    <td>
-                        <span *ngFor="let idea of challenge.ideas; let last = last">
-                            <a class="form-control-static" [routerLink]="['/idea', idea?.id, 'view']">{{ idea.id }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td class="text-right">

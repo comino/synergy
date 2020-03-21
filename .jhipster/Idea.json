@@ -3,11 +3,17 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "description",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -18,12 +24,11 @@
             "relationshipName": "project"
         },
         {
-            "relationshipType": "many-to-many",
+            "relationshipType": "many-to-one",
             "otherEntityName": "challenge",
             "otherEntityRelationshipName": "idea",
             "relationshipName": "challenge",
-            "otherEntityField": "id",
-            "ownerSide": false
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20200320230100",

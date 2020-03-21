@@ -26,6 +26,7 @@
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.task.name">Name</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.task.description">Description</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.task.skill">Skill</span></th>
+                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.task.userProfile">User Profile</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,6 +39,11 @@
                         <span *ngFor="let skill of task.skills; let last = last">
                             <a class="form-control-static" [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
                         </span>
+                    </td>
+                    <td>
+                        <div *ngIf="task.userProfile">
+                            <a [routerLink]="['/user-profile', task.userProfile?.id, 'view']" >{{ task.userProfile?.id }}</a>
+                        </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

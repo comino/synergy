@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -47,7 +48,7 @@ public class IdeaResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/ideas")
-    public ResponseEntity<Idea> createIdea(@RequestBody Idea idea) throws URISyntaxException {
+    public ResponseEntity<Idea> createIdea(@Valid @RequestBody Idea idea) throws URISyntaxException {
         log.debug("REST request to save Idea : {}", idea);
         if (idea.getId() != null) {
             throw new BadRequestAlertException("A new idea cannot already have an ID", ENTITY_NAME, "idexists");
@@ -68,7 +69,7 @@ public class IdeaResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/ideas")
-    public ResponseEntity<Idea> updateIdea(@RequestBody Idea idea) throws URISyntaxException {
+    public ResponseEntity<Idea> updateIdea(@Valid @RequestBody Idea idea) throws URISyntaxException {
         log.debug("REST request to update Idea : {}", idea);
         if (idea.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

@@ -29,7 +29,7 @@
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.email">Email</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.description">Description</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.image">Image</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.userProfile">User Profile</span></th>
+                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.user">User</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.skill">Skill</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.task">Task</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.idea">Idea</span></th>
@@ -51,8 +51,8 @@
                         <span *ngIf="project.image">{{ project.imageContentType }}, {{ byteSize(project.image) }}</span>
                     </td>
                     <td>
-                        <span *ngFor="let userProfile of project.userProfiles; let last = last">
-                            <a class="form-control-static" [routerLink]="['/user-profile', userProfile?.id, 'view']">{{ userProfile.id }}</a>{{ last ? '' : ', ' }}
+                        <span *ngFor="let user of project.users; let last = last">
+                            {{ user.id }}{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td>

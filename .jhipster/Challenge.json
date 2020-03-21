@@ -3,15 +3,24 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "problems",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "description",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "solution",
@@ -36,18 +45,16 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "idea",
+            "otherEntityRelationshipName": "challenge",
+            "relationshipName": "idea"
+        },
+        {
             "relationshipType": "many-to-many",
             "otherEntityName": "category",
             "otherEntityRelationshipName": "challenge",
             "relationshipName": "category",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "idea",
-            "otherEntityRelationshipName": "challenge",
-            "relationshipName": "idea",
             "otherEntityField": "id",
             "ownerSide": true
         }

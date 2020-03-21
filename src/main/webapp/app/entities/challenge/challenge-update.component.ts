@@ -9,10 +9,6 @@ import { IChallenge, Challenge } from 'app/shared/model/challenge.model';
 import { ChallengeService } from './challenge.service';
 import { ICategory } from 'app/shared/model/category.model';
 import { CategoryService } from 'app/entities/category/category.service';
-import { IIdea } from 'app/shared/model/idea.model';
-import { IdeaService } from 'app/entities/idea/idea.service';
-
-type SelectableEntity = ICategory | IIdea;
 
 @Component({
   selector: 'jhi-challenge-update',
@@ -21,26 +17,23 @@ type SelectableEntity = ICategory | IIdea;
 export class ChallengeUpdateComponent implements OnInit {
   isSaving = false;
   categories: ICategory[] = [];
-  ideas: IIdea[] = [];
 
   editForm = this.fb.group({
     id: [],
-    name: [],
-    problems: [],
-    description: [],
+    name: [null, [Validators.required]],
+    problems: [null, [Validators.required]],
+    description: [null, [Validators.required]],
     solution: [],
     targetAudience: [],
     stakeHolder: [],
     slackChannel: [],
     ministryProject: [],
-    categories: [],
-    ideas: []
+    categories: []
   });
 
   constructor(
     protected challengeService: ChallengeService,
     protected categoryService: CategoryService,
-    protected ideaService: IdeaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -50,8 +43,6 @@ export class ChallengeUpdateComponent implements OnInit {
       this.updateForm(challenge);
 
       this.categoryService.query().subscribe((res: HttpResponse<ICategory[]>) => (this.categories = res.body || []));
-
-      this.ideaService.query().subscribe((res: HttpResponse<IIdea[]>) => (this.ideas = res.body || []));
     });
   }
 
@@ -66,8 +57,7 @@ export class ChallengeUpdateComponent implements OnInit {
       stakeHolder: challenge.stakeHolder,
       slackChannel: challenge.slackChannel,
       ministryProject: challenge.ministryProject,
-      categories: challenge.categories,
-      ideas: challenge.ideas
+      categories: challenge.categories
     });
   }
 
@@ -97,8 +87,7 @@ export class ChallengeUpdateComponent implements OnInit {
       stakeHolder: this.editForm.get(['stakeHolder'])!.value,
       slackChannel: this.editForm.get(['slackChannel'])!.value,
       ministryProject: this.editForm.get(['ministryProject'])!.value,
-      categories: this.editForm.get(['categories'])!.value,
-      ideas: this.editForm.get(['ideas'])!.value
+      categories: this.editForm.get(['categories'])!.value
     };
   }
 
@@ -118,11 +107,11 @@ export class ChallengeUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  trackById(index: number, item: ICategory): any {
     return item.id;
   }
 
-  getSelected(selectedVals: SelectableEntity[], option: SelectableEntity): SelectableEntity {
+  getSelected(selectedVals: ICategory[], option: ICategory): ICategory {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

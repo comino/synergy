@@ -9,6 +9,10 @@ import { ITask, Task } from 'app/shared/model/task.model';
 import { TaskService } from './task.service';
 import { ISkill } from 'app/shared/model/skill.model';
 import { SkillService } from 'app/entities/skill/skill.service';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
+
+type SelectableEntity = ISkill | IUserProfile;
 
 @Component({
   selector: 'jhi-task-update',
@@ -17,17 +21,20 @@ import { SkillService } from 'app/entities/skill/skill.service';
 export class TaskUpdateComponent implements OnInit {
   isSaving = false;
   skills: ISkill[] = [];
+  userprofiles: IUserProfile[] = [];
 
   editForm = this.fb.group({
     id: [],
     name: [],
     description: [],
-    skills: []
+    skills: [],
+    userProfile: []
   });
 
   constructor(
     protected taskService: TaskService,
     protected skillService: SkillService,
+    protected userProfileService: UserProfileService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -37,6 +44,8 @@ export class TaskUpdateComponent implements OnInit {
       this.updateForm(task);
 
       this.skillService.query().subscribe((res: HttpResponse<ISkill[]>) => (this.skills = res.body || []));
+
+      this.userProfileService.query().subscribe((res: HttpResponse<IUserProfile[]>) => (this.userprofiles = res.body || []));
     });
   }
 
@@ -45,7 +54,8 @@ export class TaskUpdateComponent implements OnInit {
       id: task.id,
       name: task.name,
       description: task.description,
-      skills: task.skills
+      skills: task.skills,
+      userProfile: task.userProfile
     });
   }
 
@@ -69,7 +79,8 @@ export class TaskUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
       description: this.editForm.get(['description'])!.value,
-      skills: this.editForm.get(['skills'])!.value
+      skills: this.editForm.get(['skills'])!.value,
+      userProfile: this.editForm.get(['userProfile'])!.value
     };
   }
 
@@ -89,7 +100,7 @@ export class TaskUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: ISkill): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 

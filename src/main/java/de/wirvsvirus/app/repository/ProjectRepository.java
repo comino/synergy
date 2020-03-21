@@ -17,13 +17,13 @@ import java.util.Optional;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-    @Query(value = "select distinct project from Project project left join fetch project.userProfiles left join fetch project.skills left join fetch project.tasks",
+    @Query(value = "select distinct project from Project project left join fetch project.users left join fetch project.skills left join fetch project.tasks",
         countQuery = "select count(distinct project) from Project project")
     Page<Project> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct project from Project project left join fetch project.userProfiles left join fetch project.skills left join fetch project.tasks")
+    @Query("select distinct project from Project project left join fetch project.users left join fetch project.skills left join fetch project.tasks")
     List<Project> findAllWithEagerRelationships();
 
-    @Query("select project from Project project left join fetch project.userProfiles left join fetch project.skills left join fetch project.tasks where project.id =:id")
+    @Query("select project from Project project left join fetch project.users left join fetch project.skills left join fetch project.tasks where project.id =:id")
     Optional<Project> findOneWithEagerRelationships(@Param("id") Long id);
 }

@@ -46,12 +46,6 @@
                         <a [routerLink]="['/category', category?.id, 'view']">{{ category.id }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.idea">Idea</span></dt>
-                <dd>
-                    <span *ngFor="let idea of challenge.ideas; let last = last">
-                        <a [routerLink]="['/idea', idea?.id, 'view']">{{ idea.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

@@ -30,9 +30,9 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "userProfile",
+            "otherEntityName": "user",
             "otherEntityRelationshipName": "project",
-            "relationshipName": "userProfile",
+            "relationshipName": "user",
             "otherEntityField": "id",
             "ownerSide": true
         },

@@ -20,17 +20,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="category"/>
         
-        <addForeignKeyConstraint baseColumnNames="challenge_id"
-                                 baseTableName="challenge_idea"
-                                 constraintName="fk_challenge_idea_challenge_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="challenge"/>
-
-        <addForeignKeyConstraint baseColumnNames="idea_id"
-                                 baseTableName="challenge_idea"
-                                 constraintName="fk_challenge_idea_idea_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="idea"/>
-        
     </changeSet>
 </databaseChangeLog>

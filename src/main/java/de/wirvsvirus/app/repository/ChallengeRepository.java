@@ -17,13 +17,13 @@ import java.util.Optional;
 @Repository
 public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
 
-    @Query(value = "select distinct challenge from Challenge challenge left join fetch challenge.categories left join fetch challenge.ideas",
+    @Query(value = "select distinct challenge from Challenge challenge left join fetch challenge.categories",
         countQuery = "select count(distinct challenge) from Challenge challenge")
     Page<Challenge> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct challenge from Challenge challenge left join fetch challenge.categories left join fetch challenge.ideas")
+    @Query("select distinct challenge from Challenge challenge left join fetch challenge.categories")
     List<Challenge> findAllWithEagerRelationships();
 
-    @Query("select challenge from Challenge challenge left join fetch challenge.categories left join fetch challenge.ideas where challenge.id =:id")
+    @Query("select challenge from Challenge challenge left join fetch challenge.categories where challenge.id =:id")
     Optional<Challenge> findOneWithEagerRelationships(@Param("id") Long id);
 }

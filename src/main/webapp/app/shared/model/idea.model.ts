@@ -6,7 +6,7 @@ export interface IIdea {
   name?: string;
   description?: string;
   projects?: IProject[];
-  challenges?: IChallenge[];
+  challenge?: IChallenge;
 }
 
 export class Idea implements IIdea {
@@ -15,6 +15,6 @@ export class Idea implements IIdea {
     public name?: string,
     public description?: string,
     public projects?: IProject[],
-    public challenges?: IChallenge[]
+    public challenge?: IChallenge
   ) {}
 }

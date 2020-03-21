@@ -24,8 +24,8 @@
       "stakeHolder": "Stake Holder",
       "slackChannel": "Slack Channel",
       "ministryProject": "Ministry Project",
-      "category": "Category",
-      "idea": "Idea"
+      "idea": "Idea",
+      "category": "Category"
     }
   }
 }

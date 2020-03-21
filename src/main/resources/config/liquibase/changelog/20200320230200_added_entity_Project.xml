@@ -46,8 +46,8 @@
 
     <changeSet id="20200320230200-1-relations" author="jhipster">
 
-        <createTable tableName="project_user_profile">
-            <column name="user_profile_id" type="bigint">
+        <createTable tableName="project_user">
+            <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="project_id" type="bigint">
@@ -55,7 +55,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="project_id, user_profile_id" tableName="project_user_profile"/>
+        <addPrimaryKey columnNames="project_id, user_id" tableName="project_user"/>
         
         <createTable tableName="project_skill">
             <column name="skill_id" type="bigint">

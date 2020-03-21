@@ -1,10 +1,11 @@
 package de.wirvsvirus.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,20 +26,21 @@ public class Idea implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description")
+    @NotNull
+    @Column(name = "description", nullable = false)
     private String description;
 
     @OneToMany(mappedBy = "idea")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Project> projects = new HashSet<>();
 
-    @ManyToMany(mappedBy = "ideas")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JsonIgnore
-    private Set<Challenge> challenges = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("ideas")
+    private Challenge challenge;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -100,29 +102,17 @@ public class Idea implements Serializable {
         this.projects = projects;
     }
 
-    public Set<Challenge> getChallenges() {
-        return challenges;
+    public Challenge getChallenge() {
+        return challenge;
     }
 
-    public Idea challenges(Set<Challenge> challenges) {
-        this.challenges = challenges;
+    public Idea challenge(Challenge challenge) {
+        this.challenge = challenge;
         return this;
     }
 
-    public Idea addChallenge(Challenge challenge) {
-        this.challenges.add(challenge);
-        challenge.getIdeas().add(this);
-        return this;
-    }
-
-    public Idea removeChallenge(Challenge challenge) {
-        this.challenges.remove(challenge);
-        challenge.getIdeas().remove(this);
-        return this;
-    }
-
-    public void setChallenges(Set<Challenge> challenges) {
-        this.challenges = challenges;
+    public void setChallenge(Challenge challenge) {
+        this.challenge = challenge;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -7,8 +7,12 @@ import { Observable } from 'rxjs';
 
 import { IUserProfile, UserProfile } from 'app/shared/model/user-profile.model';
 import { UserProfileService } from './user-profile.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 import { ISkill } from 'app/shared/model/skill.model';
 import { SkillService } from 'app/entities/skill/skill.service';
+
+type SelectableEntity = IUser | ISkill;
 
 @Component({
   selector: 'jhi-user-profile-update',
@@ -16,17 +20,20 @@ import { SkillService } from 'app/entities/skill/skill.service';
 })
 export class UserProfileUpdateComponent implements OnInit {
   isSaving = false;
+  users: IUser[] = [];
   skills: ISkill[] = [];
 
   editForm = this.fb.group({
     id: [],
     github: [],
     twitter: [],
+    user: [],
     skills: []
   });
 
   constructor(
     protected userProfileService: UserProfileService,
+    protected userService: UserService,
     protected skillService: SkillService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -35,6 +42,8 @@ export class UserProfileUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ userProfile }) => {
       this.updateForm(userProfile);
+
+      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
 
       this.skillService.query().subscribe((res: HttpResponse<ISkill[]>) => (this.skills = res.body || []));
     });
@@ -45,6 +54,7 @@ export class UserProfileUpdateComponent implements OnInit {
       id: userProfile.id,
       github: userProfile.github,
       twitter: userProfile.twitter,
+      user: userProfile.user,
       skills: userProfile.skills
     });
   }
@@ -69,6 +79,7 @@ export class UserProfileUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       github: this.editForm.get(['github'])!.value,
       twitter: this.editForm.get(['twitter'])!.value,
+      user: this.editForm.get(['user'])!.value,
       skills: this.editForm.get(['skills'])!.value
     };
   }
@@ -89,7 +100,7 @@ export class UserProfileUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: ISkill): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 
