@@ -9,6 +9,10 @@ entity UserProfile {
 
 entity Challenge {
 	name String required
+}
+
+entity Idea {
+	title String required
 	problems String required 
 	description String required
 	solution String
@@ -20,11 +24,6 @@ entity Challenge {
 
 entity Category {
 	name String
-}
-
-entity Idea {
-	name String required
-    description String required
 }
 
 entity Project {
@@ -42,8 +41,8 @@ entity Task {
 }
 
 relationship ManyToMany {
-    UserProfile{skill(name)} to Skill {userProfile(github)}
-    Project{user(login)} to User{project(name)}
+    UserProfile{skill(name)} to Skill{userProfile(github)}
+    Project{userProfile(github)} to UserProfile{project(name)}
     Project{skill(name)} to Skill{project(name)}
     Project{task(name)} to Task{project(name)}
     Task{skill(name)} to Skill{task(name)}
@@ -51,9 +50,9 @@ relationship ManyToMany {
 }
 
 relationship OneToMany{
-    Idea to Project{idea(name)}
-	Challenge to Idea{challenge(name)}
-    UserProfile to Task{skill(name)}
+    Idea{project(name)} to Project{idea(name)}
+	Challenge{idea(name)} to Idea{challenge(name)}
+    UserProfile{task(name)} to Task{userProfile(github)}
 }
 
 relationship OneToOne {
