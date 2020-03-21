@@ -1,13 +1,51 @@
-<div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
+<div class="jumbotron">
+  <div class="heading">
+    <h1 class="text-center"> Synergy </h1>
+    <div class="text-center">
+      <span style="font-size:1;"> Ein Projekt für: </span>
+      <img src="../../content/images/wirvsvirus.png">
     </div>
-
-    <div class="col-md-9">
+  </div>
+<div class="row welcome-header">
+  <!--- <a href="https://www.freepik.com/free-photos-vectors/people">People vector created by freepik - www.freepik.com</a> -->
+  <!--- <a href="https://www.freepik.com/free-photos-vectors/doctor">Doctor photo created by freepik - www.freepik.com</a> -->
+  <!--- <a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by macrovector_official - www.freepik.com</a> -->
+  <div class="col-md-3 offset-md-1">
+    <div class="welcome-card">
+      <div class="welcome-img">
+        <img class="img-fluid rounded-circle mx-auto" src="../../content/images/programmer2ss.png">
+      <h2 class="text-center"> Programmierer und Kreative willens ihre Zeit für einen guten Zweck zu spenden</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="welcome-card">
+      <div class="welcome-img">
+        <img class="img-fluid rounded-circle mx-auto" src="../../content/images/corona2rr.png">
+      <h2 class="text-center"> Eine gemeinsame Herausforderung </h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="welcome-card">
+      <div class="welcome-img">
+        <img class="img-fluid rounded-circle mx-auto" src="../../content/images/society2.png">
+        <h2 class="text-center">Projekte die einen Unterschied machen</h2>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row" style="">
+    <div class="col offset-md-2" style="line-height: 4em;">
+      <span class="text-center" style="color:black;font-size:2.5em; "> <fa-icon icon="heart"></fa-icon> Wir bringen euch zusammen</span>
+      <button class="btn btn-large btn-primary" style="font-size:2.5em; margin-left: 3em;"> Los geht's!</button>
+    </div>
+  </div>
+</div>
+ <div class="row">
+    <div class="col-md-12">
         <h1 class="display-4" jhiTranslate="home.title">Welcome, Java Hipster!</h1>
-
         <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
-
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"

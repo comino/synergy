@@ -1,7 +1,7 @@
-<nav class="navbar navbar-dark navbar-expand-md bg-dark">
+<nav class="navbar navbar-version navbar-expand-md bg-light">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
+        <span class="navbar-title">Synergy</span> 
         <span class="logo-img"></span>
-        <span jhiTranslate="global.title" class="navbar-title">Wirvsvirus</span> <span class="navbar-version">{{ version }}</span>
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -16,6 +16,15 @@
                     </span>
                 </a>
             </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link" routerLink="challenge" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="asterisk"></fa-icon>
+                        <span jhiTranslate="">Herausforderungen</span>
+                    </span>
+                </a>
+            </li>
+
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">

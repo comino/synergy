@@ -1,23 +1,32 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-
-.hipster {
-  display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
-  background-size: contain;
+.heading {
+  h1 {
+    margin-left: -10%;
+    font-size: 7em;
+    font-weight: 900;
+    margin-bottom: -20px;
+  }
+  span {
+    margin-left: 20%;
+  }
+  img {
+    height: 60px;
+    background-color: #aaaaaa;
+  }
 }
 
-/* wait autoprefixer update to allow simple generation of high pixel density media query */
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (-moz-min-device-pixel-ratio: 2),
-  only screen and (-o-min-device-pixel-ratio: 2/1),
-  only screen and (min-resolution: 192dpi),
-  only screen and (min-resolution: 2dppx) {
-  .hipster {
-    background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
-    background-size: contain;
+.jumbotron {
+  margin-top: -1.5em;
+  padding-top: 0.5em;
+  margin-left: -3%;
+  margin-right: -3%;
+}
+.welcome-header {
+  min-height: 600px;
+  .welcome-card {
+    .welcome-img {
+    }
   }
 }

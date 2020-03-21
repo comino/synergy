@@ -1,6 +1,6 @@
 
 entity Skill {
-    name String
+    name String required 
 }
 
 entity UserProfile {
@@ -43,8 +43,8 @@ entity Task {
 }
 
 relationship ManyToMany {
-    UserProfile to Skill 
-    Project to UserProfile
+    User to Skill 
+    Project to User
     Project to Skill
     Project to Task
     Task to Skill
@@ -54,5 +54,7 @@ relationship ManyToMany {
 
 relationship OneToMany{
     Idea to Project
+    User to UserProfile
+    Task to User
 }
 
