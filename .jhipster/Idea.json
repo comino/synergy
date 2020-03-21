@@ -2,7 +2,14 @@
     "name": "Idea",
     "fields": [
         {
-            "fieldName": "name",
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "problems",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -14,6 +21,26 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "solution",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "targetAudience",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stakeHolder",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "slackChannel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ministryProject",
+            "fieldType": "Boolean"
         }
     ],
     "relationships": [
@@ -28,7 +55,7 @@
             "otherEntityName": "challenge",
             "otherEntityRelationshipName": "idea",
             "relationshipName": "challenge",
-            "otherEntityField": "id"
+            "otherEntityField": "name"
         }
     ],
     "changelogDate": "20200320230100",

@@ -29,7 +29,7 @@
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.email">Email</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.description">Description</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.image">Image</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.userProfile">User Profile</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.skill">Skill</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.task">Task</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.project.idea">Idea</span></th>
@@ -51,23 +51,23 @@
                         <span *ngIf="project.image">{{ project.imageContentType }}, {{ byteSize(project.image) }}</span>
                     </td>
                     <td>
-                        <span *ngFor="let user of project.users; let last = last">
-                            {{ user.id }}{{ last ? '' : ', ' }}
+                        <span *ngFor="let userProfile of project.userProfiles; let last = last">
+                            <a class="form-control-static" [routerLink]="['/user-profile', userProfile?.id, 'view']">{{ userProfile.github }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td>
                         <span *ngFor="let skill of project.skills; let last = last">
-                            <a class="form-control-static" [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static" [routerLink]="['/skill', skill?.id, 'view']">{{ skill.name }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td>
                         <span *ngFor="let task of project.tasks; let last = last">
-                            <a class="form-control-static" [routerLink]="['/task', task?.id, 'view']">{{ task.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static" [routerLink]="['/task', task?.id, 'view']">{{ task.name }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td>
                         <div *ngIf="project.idea">
-                            <a [routerLink]="['/idea', project.idea?.id, 'view']" >{{ project.idea?.id }}</a>
+                            <a [routerLink]="['/idea', project.idea?.id, 'view']" >{{ project.idea?.title }}</a>
                         </div>
                     </td>
                     <td class="text-right">

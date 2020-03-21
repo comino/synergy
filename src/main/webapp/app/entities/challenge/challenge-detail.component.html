@@ -12,38 +12,10 @@
                 <dd>
                     <span>{{ challenge.name }}</span>
                 </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.problems">Problems</span></dt>
-                <dd>
-                    <span>{{ challenge.problems }}</span>
-                </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.description">Description</span></dt>
-                <dd>
-                    <span>{{ challenge.description }}</span>
-                </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.solution">Solution</span></dt>
-                <dd>
-                    <span>{{ challenge.solution }}</span>
-                </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.targetAudience">Target Audience</span></dt>
-                <dd>
-                    <span>{{ challenge.targetAudience }}</span>
-                </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.stakeHolder">Stake Holder</span></dt>
-                <dd>
-                    <span>{{ challenge.stakeHolder }}</span>
-                </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.slackChannel">Slack Channel</span></dt>
-                <dd>
-                    <span>{{ challenge.slackChannel }}</span>
-                </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.challenge.ministryProject">Ministry Project</span></dt>
-                <dd>
-                    <span>{{ challenge.ministryProject }}</span>
-                </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.challenge.category">Category</span></dt>
                 <dd>
                     <span *ngFor="let category of challenge.categories; let last = last">
-                        <a [routerLink]="['/category', category?.id, 'view']">{{ category.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/category', category?.id, 'view']">{{ category.name }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
             </dl>

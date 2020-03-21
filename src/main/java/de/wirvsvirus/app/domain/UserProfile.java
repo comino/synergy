@@ -1,5 +1,6 @@
 package de.wirvsvirus.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -44,6 +45,11 @@ public class UserProfile implements Serializable {
                joinColumns = @JoinColumn(name = "user_profile_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "id"))
     private Set<Skill> skills = new HashSet<>();
+
+    @ManyToMany(mappedBy = "userProfiles")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonIgnore
+    private Set<Project> projects = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -141,6 +147,31 @@ public class UserProfile implements Serializable {
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public UserProfile projects(Set<Project> projects) {
+        this.projects = projects;
+        return this;
+    }
+
+    public UserProfile addProject(Project project) {
+        this.projects.add(project);
+        project.getUserProfiles().add(this);
+        return this;
+    }
+
+    public UserProfile removeProject(Project project) {
+        this.projects.remove(project);
+        project.getUserProfiles().remove(this);
+        return this;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

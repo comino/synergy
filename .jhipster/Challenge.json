@@ -7,40 +7,6 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "problems",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "solution",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "targetAudience",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "stakeHolder",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "slackChannel",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "ministryProject",
-            "fieldType": "Boolean"
         }
     ],
     "relationships": [
@@ -55,7 +21,7 @@
             "otherEntityName": "category",
             "otherEntityRelationshipName": "challenge",
             "relationshipName": "category",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true
         }
     ],

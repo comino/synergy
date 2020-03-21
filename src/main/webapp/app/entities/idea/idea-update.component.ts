@@ -20,8 +20,14 @@ export class IdeaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    name: [null, [Validators.required]],
+    title: [null, [Validators.required]],
+    problems: [null, [Validators.required]],
     description: [null, [Validators.required]],
+    solution: [],
+    targetAudience: [],
+    stakeHolder: [],
+    slackChannel: [],
+    ministryProject: [],
     challenge: []
   });
 
@@ -43,8 +49,14 @@ export class IdeaUpdateComponent implements OnInit {
   updateForm(idea: IIdea): void {
     this.editForm.patchValue({
       id: idea.id,
-      name: idea.name,
+      title: idea.title,
+      problems: idea.problems,
       description: idea.description,
+      solution: idea.solution,
+      targetAudience: idea.targetAudience,
+      stakeHolder: idea.stakeHolder,
+      slackChannel: idea.slackChannel,
+      ministryProject: idea.ministryProject,
       challenge: idea.challenge
     });
   }
@@ -67,8 +79,14 @@ export class IdeaUpdateComponent implements OnInit {
     return {
       ...new Idea(),
       id: this.editForm.get(['id'])!.value,
-      name: this.editForm.get(['name'])!.value,
+      title: this.editForm.get(['title'])!.value,
+      problems: this.editForm.get(['problems'])!.value,
       description: this.editForm.get(['description'])!.value,
+      solution: this.editForm.get(['solution'])!.value,
+      targetAudience: this.editForm.get(['targetAudience'])!.value,
+      stakeHolder: this.editForm.get(['stakeHolder'])!.value,
+      slackChannel: this.editForm.get(['slackChannel'])!.value,
+      ministryProject: this.editForm.get(['ministryProject'])!.value,
       challenge: this.editForm.get(['challenge'])!.value
     };
   }

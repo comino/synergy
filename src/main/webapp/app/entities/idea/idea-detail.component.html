@@ -8,18 +8,42 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="wirvsvirusApp.idea.name">Name</span></dt>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.title">Title</span></dt>
                 <dd>
-                    <span>{{ idea.name }}</span>
+                    <span>{{ idea.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.problems">Problems</span></dt>
+                <dd>
+                    <span>{{ idea.problems }}</span>
                 </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.idea.description">Description</span></dt>
                 <dd>
                     <span>{{ idea.description }}</span>
                 </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.solution">Solution</span></dt>
+                <dd>
+                    <span>{{ idea.solution }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.targetAudience">Target Audience</span></dt>
+                <dd>
+                    <span>{{ idea.targetAudience }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.stakeHolder">Stake Holder</span></dt>
+                <dd>
+                    <span>{{ idea.stakeHolder }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.slackChannel">Slack Channel</span></dt>
+                <dd>
+                    <span>{{ idea.slackChannel }}</span>
+                </dd>
+                <dt><span jhiTranslate="wirvsvirusApp.idea.ministryProject">Ministry Project</span></dt>
+                <dd>
+                    <span>{{ idea.ministryProject }}</span>
+                </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.idea.challenge">Challenge</span></dt>
                 <dd>
                     <div *ngIf="idea.challenge">
-                        <a [routerLink]="['/challenge', idea.challenge?.id, 'view']">{{ idea.challenge?.id }}</a>
+                        <a [routerLink]="['/challenge', idea.challenge?.id, 'view']">{{ idea.challenge?.name }}</a>
                     </div>
                 </dd>
             </dl>

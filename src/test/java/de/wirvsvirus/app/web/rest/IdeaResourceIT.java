@@ -30,11 +30,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class IdeaResourceIT {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PROBLEMS = "AAAAAAAAAA";
+    private static final String UPDATED_PROBLEMS = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SOLUTION = "AAAAAAAAAA";
+    private static final String UPDATED_SOLUTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TARGET_AUDIENCE = "AAAAAAAAAA";
+    private static final String UPDATED_TARGET_AUDIENCE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_STAKE_HOLDER = "AAAAAAAAAA";
+    private static final String UPDATED_STAKE_HOLDER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SLACK_CHANNEL = "AAAAAAAAAA";
+    private static final String UPDATED_SLACK_CHANNEL = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_MINISTRY_PROJECT = false;
+    private static final Boolean UPDATED_MINISTRY_PROJECT = true;
 
     @Autowired
     private IdeaRepository ideaRepository;
@@ -55,8 +73,14 @@ public class IdeaResourceIT {
      */
     public static Idea createEntity(EntityManager em) {
         Idea idea = new Idea()
-            .name(DEFAULT_NAME)
-            .description(DEFAULT_DESCRIPTION);
+            .title(DEFAULT_TITLE)
+            .problems(DEFAULT_PROBLEMS)
+            .description(DEFAULT_DESCRIPTION)
+            .solution(DEFAULT_SOLUTION)
+            .targetAudience(DEFAULT_TARGET_AUDIENCE)
+            .stakeHolder(DEFAULT_STAKE_HOLDER)
+            .slackChannel(DEFAULT_SLACK_CHANNEL)
+            .ministryProject(DEFAULT_MINISTRY_PROJECT);
         return idea;
     }
     /**
@@ -67,8 +91,14 @@ public class IdeaResourceIT {
      */
     public static Idea createUpdatedEntity(EntityManager em) {
         Idea idea = new Idea()
-            .name(UPDATED_NAME)
-            .description(UPDATED_DESCRIPTION);
+            .title(UPDATED_TITLE)
+            .problems(UPDATED_PROBLEMS)
+            .description(UPDATED_DESCRIPTION)
+            .solution(UPDATED_SOLUTION)
+            .targetAudience(UPDATED_TARGET_AUDIENCE)
+            .stakeHolder(UPDATED_STAKE_HOLDER)
+            .slackChannel(UPDATED_SLACK_CHANNEL)
+            .ministryProject(UPDATED_MINISTRY_PROJECT);
         return idea;
     }
 
@@ -92,8 +122,14 @@ public class IdeaResourceIT {
         List<Idea> ideaList = ideaRepository.findAll();
         assertThat(ideaList).hasSize(databaseSizeBeforeCreate + 1);
         Idea testIdea = ideaList.get(ideaList.size() - 1);
-        assertThat(testIdea.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testIdea.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testIdea.getProblems()).isEqualTo(DEFAULT_PROBLEMS);
         assertThat(testIdea.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testIdea.getSolution()).isEqualTo(DEFAULT_SOLUTION);
+        assertThat(testIdea.getTargetAudience()).isEqualTo(DEFAULT_TARGET_AUDIENCE);
+        assertThat(testIdea.getStakeHolder()).isEqualTo(DEFAULT_STAKE_HOLDER);
+        assertThat(testIdea.getSlackChannel()).isEqualTo(DEFAULT_SLACK_CHANNEL);
+        assertThat(testIdea.isMinistryProject()).isEqualTo(DEFAULT_MINISTRY_PROJECT);
     }
 
     @Test
@@ -118,10 +154,28 @@ public class IdeaResourceIT {
 
     @Test
     @Transactional
-    public void checkNameIsRequired() throws Exception {
+    public void checkTitleIsRequired() throws Exception {
         int databaseSizeBeforeTest = ideaRepository.findAll().size();
         // set the field null
-        idea.setName(null);
+        idea.setTitle(null);
+
+        // Create the Idea, which fails.
+
+        restIdeaMockMvc.perform(post("/api/ideas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(idea)))
+            .andExpect(status().isBadRequest());
+
+        List<Idea> ideaList = ideaRepository.findAll();
+        assertThat(ideaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkProblemsIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ideaRepository.findAll().size();
+        // set the field null
+        idea.setProblems(null);
 
         // Create the Idea, which fails.
 
@@ -163,8 +217,14 @@ public class IdeaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(idea.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].problems").value(hasItem(DEFAULT_PROBLEMS)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].solution").value(hasItem(DEFAULT_SOLUTION)))
+            .andExpect(jsonPath("$.[*].targetAudience").value(hasItem(DEFAULT_TARGET_AUDIENCE)))
+            .andExpect(jsonPath("$.[*].stakeHolder").value(hasItem(DEFAULT_STAKE_HOLDER)))
+            .andExpect(jsonPath("$.[*].slackChannel").value(hasItem(DEFAULT_SLACK_CHANNEL)))
+            .andExpect(jsonPath("$.[*].ministryProject").value(hasItem(DEFAULT_MINISTRY_PROJECT.booleanValue())));
     }
     
     @Test
@@ -178,8 +238,14 @@ public class IdeaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(idea.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
+            .andExpect(jsonPath("$.problems").value(DEFAULT_PROBLEMS))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.solution").value(DEFAULT_SOLUTION))
+            .andExpect(jsonPath("$.targetAudience").value(DEFAULT_TARGET_AUDIENCE))
+            .andExpect(jsonPath("$.stakeHolder").value(DEFAULT_STAKE_HOLDER))
+            .andExpect(jsonPath("$.slackChannel").value(DEFAULT_SLACK_CHANNEL))
+            .andExpect(jsonPath("$.ministryProject").value(DEFAULT_MINISTRY_PROJECT.booleanValue()));
     }
 
     @Test
@@ -203,8 +269,14 @@ public class IdeaResourceIT {
         // Disconnect from session so that the updates on updatedIdea are not directly saved in db
         em.detach(updatedIdea);
         updatedIdea
-            .name(UPDATED_NAME)
-            .description(UPDATED_DESCRIPTION);
+            .title(UPDATED_TITLE)
+            .problems(UPDATED_PROBLEMS)
+            .description(UPDATED_DESCRIPTION)
+            .solution(UPDATED_SOLUTION)
+            .targetAudience(UPDATED_TARGET_AUDIENCE)
+            .stakeHolder(UPDATED_STAKE_HOLDER)
+            .slackChannel(UPDATED_SLACK_CHANNEL)
+            .ministryProject(UPDATED_MINISTRY_PROJECT);
 
         restIdeaMockMvc.perform(put("/api/ideas")
             .contentType(MediaType.APPLICATION_JSON)
@@ -215,8 +287,14 @@ public class IdeaResourceIT {
         List<Idea> ideaList = ideaRepository.findAll();
         assertThat(ideaList).hasSize(databaseSizeBeforeUpdate);
         Idea testIdea = ideaList.get(ideaList.size() - 1);
-        assertThat(testIdea.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testIdea.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testIdea.getProblems()).isEqualTo(UPDATED_PROBLEMS);
         assertThat(testIdea.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testIdea.getSolution()).isEqualTo(UPDATED_SOLUTION);
+        assertThat(testIdea.getTargetAudience()).isEqualTo(UPDATED_TARGET_AUDIENCE);
+        assertThat(testIdea.getStakeHolder()).isEqualTo(UPDATED_STAKE_HOLDER);
+        assertThat(testIdea.getSlackChannel()).isEqualTo(UPDATED_SLACK_CHANNEL);
+        assertThat(testIdea.isMinistryProject()).isEqualTo(UPDATED_MINISTRY_PROJECT);
     }
 
     @Test

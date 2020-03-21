@@ -27,12 +27,31 @@ public class Idea implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "title", nullable = false)
+    private String title;
+
+    @NotNull
+    @Column(name = "problems", nullable = false)
+    private String problems;
 
     @NotNull
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "solution")
+    private String solution;
+
+    @Column(name = "target_audience")
+    private String targetAudience;
+
+    @Column(name = "stake_holder")
+    private String stakeHolder;
+
+    @Column(name = "slack_channel")
+    private String slackChannel;
+
+    @Column(name = "ministry_project")
+    private Boolean ministryProject;
 
     @OneToMany(mappedBy = "idea")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -51,17 +70,30 @@ public class Idea implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public Idea name(String name) {
-        this.name = name;
+    public Idea title(String title) {
+        this.title = title;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getProblems() {
+        return problems;
+    }
+
+    public Idea problems(String problems) {
+        this.problems = problems;
+        return this;
+    }
+
+    public void setProblems(String problems) {
+        this.problems = problems;
     }
 
     public String getDescription() {
@@ -75,6 +107,71 @@ public class Idea implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public Idea solution(String solution) {
+        this.solution = solution;
+        return this;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
+    }
+
+    public String getTargetAudience() {
+        return targetAudience;
+    }
+
+    public Idea targetAudience(String targetAudience) {
+        this.targetAudience = targetAudience;
+        return this;
+    }
+
+    public void setTargetAudience(String targetAudience) {
+        this.targetAudience = targetAudience;
+    }
+
+    public String getStakeHolder() {
+        return stakeHolder;
+    }
+
+    public Idea stakeHolder(String stakeHolder) {
+        this.stakeHolder = stakeHolder;
+        return this;
+    }
+
+    public void setStakeHolder(String stakeHolder) {
+        this.stakeHolder = stakeHolder;
+    }
+
+    public String getSlackChannel() {
+        return slackChannel;
+    }
+
+    public Idea slackChannel(String slackChannel) {
+        this.slackChannel = slackChannel;
+        return this;
+    }
+
+    public void setSlackChannel(String slackChannel) {
+        this.slackChannel = slackChannel;
+    }
+
+    public Boolean isMinistryProject() {
+        return ministryProject;
+    }
+
+    public Idea ministryProject(Boolean ministryProject) {
+        this.ministryProject = ministryProject;
+        return this;
+    }
+
+    public void setMinistryProject(Boolean ministryProject) {
+        this.ministryProject = ministryProject;
     }
 
     public Set<Project> getProjects() {
@@ -136,8 +233,14 @@ public class Idea implements Serializable {
     public String toString() {
         return "Idea{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", problems='" + getProblems() + "'" +
             ", description='" + getDescription() + "'" +
+            ", solution='" + getSolution() + "'" +
+            ", targetAudience='" + getTargetAudience() + "'" +
+            ", stakeHolder='" + getStakeHolder() + "'" +
+            ", slackChannel='" + getSlackChannel() + "'" +
+            ", ministryProject='" + isMinistryProject() + "'" +
             "}";
     }
 }

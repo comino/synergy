@@ -29,29 +29,6 @@ public class Challenge implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = "problems", nullable = false)
-    private String problems;
-
-    @NotNull
-    @Column(name = "description", nullable = false)
-    private String description;
-
-    @Column(name = "solution")
-    private String solution;
-
-    @Column(name = "target_audience")
-    private String targetAudience;
-
-    @Column(name = "stake_holder")
-    private String stakeHolder;
-
-    @Column(name = "slack_channel")
-    private String slackChannel;
-
-    @Column(name = "ministry_project")
-    private Boolean ministryProject;
-
     @OneToMany(mappedBy = "challenge")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Idea> ideas = new HashSet<>();
@@ -83,97 +60,6 @@ public class Challenge implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getProblems() {
-        return problems;
-    }
-
-    public Challenge problems(String problems) {
-        this.problems = problems;
-        return this;
-    }
-
-    public void setProblems(String problems) {
-        this.problems = problems;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Challenge description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getSolution() {
-        return solution;
-    }
-
-    public Challenge solution(String solution) {
-        this.solution = solution;
-        return this;
-    }
-
-    public void setSolution(String solution) {
-        this.solution = solution;
-    }
-
-    public String getTargetAudience() {
-        return targetAudience;
-    }
-
-    public Challenge targetAudience(String targetAudience) {
-        this.targetAudience = targetAudience;
-        return this;
-    }
-
-    public void setTargetAudience(String targetAudience) {
-        this.targetAudience = targetAudience;
-    }
-
-    public String getStakeHolder() {
-        return stakeHolder;
-    }
-
-    public Challenge stakeHolder(String stakeHolder) {
-        this.stakeHolder = stakeHolder;
-        return this;
-    }
-
-    public void setStakeHolder(String stakeHolder) {
-        this.stakeHolder = stakeHolder;
-    }
-
-    public String getSlackChannel() {
-        return slackChannel;
-    }
-
-    public Challenge slackChannel(String slackChannel) {
-        this.slackChannel = slackChannel;
-        return this;
-    }
-
-    public void setSlackChannel(String slackChannel) {
-        this.slackChannel = slackChannel;
-    }
-
-    public Boolean isMinistryProject() {
-        return ministryProject;
-    }
-
-    public Challenge ministryProject(Boolean ministryProject) {
-        this.ministryProject = ministryProject;
-        return this;
-    }
-
-    public void setMinistryProject(Boolean ministryProject) {
-        this.ministryProject = ministryProject;
     }
 
     public Set<Idea> getIdeas() {
@@ -248,13 +134,6 @@ public class Challenge implements Serializable {
         return "Challenge{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", problems='" + getProblems() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", solution='" + getSolution() + "'" +
-            ", targetAudience='" + getTargetAudience() + "'" +
-            ", stakeHolder='" + getStakeHolder() + "'" +
-            ", slackChannel='" + getSlackChannel() + "'" +
-            ", ministryProject='" + isMinistryProject() + "'" +
             "}";
     }
 }

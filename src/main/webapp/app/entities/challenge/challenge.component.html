@@ -24,13 +24,6 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.problems">Problems</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.description">Description</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.solution">Solution</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.targetAudience">Target Audience</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.stakeHolder">Stake Holder</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.slackChannel">Slack Channel</span></th>
-                    <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.ministryProject">Ministry Project</span></th>
                     <th scope="col" ><span jhiTranslate="wirvsvirusApp.challenge.category">Category</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -39,16 +32,9 @@
                 <tr *ngFor="let challenge of challenges ;trackBy: trackId">
                     <td><a [routerLink]="['/challenge', challenge.id, 'view']">{{ challenge.id }}</a></td>
                     <td>{{ challenge.name }}</td>
-                    <td>{{ challenge.problems }}</td>
-                    <td>{{ challenge.description }}</td>
-                    <td>{{ challenge.solution }}</td>
-                    <td>{{ challenge.targetAudience }}</td>
-                    <td>{{ challenge.stakeHolder }}</td>
-                    <td>{{ challenge.slackChannel }}</td>
-                    <td>{{ challenge.ministryProject }}</td>
                     <td>
                         <span *ngFor="let category of challenge.categories; let last = last">
-                            <a class="form-control-static" [routerLink]="['/category', category?.id, 'view']">{{ category.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static" [routerLink]="['/category', category?.id, 'view']">{{ category.name }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td class="text-right">

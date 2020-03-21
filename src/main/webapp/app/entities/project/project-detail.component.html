@@ -37,28 +37,28 @@
                         {{ project.imageContentType }}, {{ byteSize(project.image) }}
                     </div>
                 </dd>
-                <dt><span jhiTranslate="wirvsvirusApp.project.user">User</span></dt>
+                <dt><span jhiTranslate="wirvsvirusApp.project.userProfile">User Profile</span></dt>
                 <dd>
-                    <span *ngFor="let user of project.users; let last = last">
-                        {{ user.id }}{{ last ? '' : ', ' }}
+                    <span *ngFor="let userProfile of project.userProfiles; let last = last">
+                        <a [routerLink]="['/user-profile', userProfile?.id, 'view']">{{ userProfile.github }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.project.skill">Skill</span></dt>
                 <dd>
                     <span *ngFor="let skill of project.skills; let last = last">
-                        <a [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/skill', skill?.id, 'view']">{{ skill.name }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.project.task">Task</span></dt>
                 <dd>
                     <span *ngFor="let task of project.tasks; let last = last">
-                        <a [routerLink]="['/task', task?.id, 'view']">{{ task.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/task', task?.id, 'view']">{{ task.name }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
                 <dt><span jhiTranslate="wirvsvirusApp.project.idea">Idea</span></dt>
                 <dd>
                     <div *ngIf="project.idea">
-                        <a [routerLink]="['/idea', project.idea?.id, 'view']">{{ project.idea?.id }}</a>
+                        <a [routerLink]="['/idea', project.idea?.id, 'view']">{{ project.idea?.title }}</a>
                     </div>
                 </dd>
             </dl>

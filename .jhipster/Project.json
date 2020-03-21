@@ -30,10 +30,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "user",
+            "otherEntityName": "userProfile",
             "otherEntityRelationshipName": "project",
-            "relationshipName": "user",
-            "otherEntityField": "id",
+            "relationshipName": "userProfile",
+            "otherEntityField": "github",
             "ownerSide": true
         },
         {
@@ -41,7 +41,7 @@
             "otherEntityName": "skill",
             "otherEntityRelationshipName": "project",
             "relationshipName": "skill",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true
         },
         {
@@ -49,7 +49,7 @@
             "otherEntityName": "task",
             "otherEntityRelationshipName": "project",
             "relationshipName": "task",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true
         },
         {
@@ -57,7 +57,7 @@
             "otherEntityName": "idea",
             "otherEntityRelationshipName": "project",
             "relationshipName": "idea",
-            "otherEntityField": "id"
+            "otherEntityField": "title"
         }
     ],
     "changelogDate": "20200320230200",

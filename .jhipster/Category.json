@@ -12,7 +12,7 @@
             "otherEntityName": "challenge",
             "otherEntityRelationshipName": "category",
             "relationshipName": "challenge",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": false
         }
     ],

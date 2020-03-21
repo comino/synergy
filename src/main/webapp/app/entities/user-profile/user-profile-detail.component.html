@@ -23,7 +23,7 @@
                 <dt><span jhiTranslate="wirvsvirusApp.userProfile.skill">Skill</span></dt>
                 <dd>
                     <span *ngFor="let skill of userProfile.skills; let last = last">
-                        <a [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/skill', skill?.id, 'view']">{{ skill.name }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
             </dl>

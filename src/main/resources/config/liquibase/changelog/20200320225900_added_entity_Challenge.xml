@@ -19,27 +19,6 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="problems" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="description" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="solution" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="target_audience" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="stake_holder" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="slack_channel" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="ministry_project" type="boolean">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
@@ -75,13 +54,6 @@
                   tableName="challenge">
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
-            <column name="problems" type="string"/>
-            <column name="description" type="string"/>
-            <column name="solution" type="string"/>
-            <column name="target_audience" type="string"/>
-            <column name="stake_holder" type="string"/>
-            <column name="slack_channel" type="string"/>
-            <column name="ministry_project" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

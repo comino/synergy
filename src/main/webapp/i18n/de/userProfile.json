@@ -20,7 +20,8 @@
       "twitter": "Twitter",
       "user": "User",
       "task": "Task",
-      "skill": "Skill"
+      "skill": "Skill",
+      "project": "Project"
     }
   }
 }

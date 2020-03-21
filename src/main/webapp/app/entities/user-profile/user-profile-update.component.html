@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label jhiTranslate="wirvsvirusApp.userProfile.skill" for="field_skills">Skill</label>
                     <select class="form-control" id="field_skills" multiple name="skills" formControlName="skills">
-                        <option [ngValue]="getSelected(editForm.get('skills')!.value, skillOption)" *ngFor="let skillOption of skills; trackBy: trackById">{{ skillOption.id }}</option>
+                        <option [ngValue]="getSelected(editForm.get('skills')!.value, skillOption)" *ngFor="let skillOption of skills; trackBy: trackById">{{ skillOption.name }}</option>
                     </select>
                 </div>
             </div>

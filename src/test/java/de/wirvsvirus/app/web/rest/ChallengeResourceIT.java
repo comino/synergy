@@ -40,27 +40,6 @@ public class ChallengeResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PROBLEMS = "AAAAAAAAAA";
-    private static final String UPDATED_PROBLEMS = "BBBBBBBBBB";
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_SOLUTION = "AAAAAAAAAA";
-    private static final String UPDATED_SOLUTION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_TARGET_AUDIENCE = "AAAAAAAAAA";
-    private static final String UPDATED_TARGET_AUDIENCE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_STAKE_HOLDER = "AAAAAAAAAA";
-    private static final String UPDATED_STAKE_HOLDER = "BBBBBBBBBB";
-
-    private static final String DEFAULT_SLACK_CHANNEL = "AAAAAAAAAA";
-    private static final String UPDATED_SLACK_CHANNEL = "BBBBBBBBBB";
-
-    private static final Boolean DEFAULT_MINISTRY_PROJECT = false;
-    private static final Boolean UPDATED_MINISTRY_PROJECT = true;
-
     @Autowired
     private ChallengeRepository challengeRepository;
 
@@ -83,14 +62,7 @@ public class ChallengeResourceIT {
      */
     public static Challenge createEntity(EntityManager em) {
         Challenge challenge = new Challenge()
-            .name(DEFAULT_NAME)
-            .problems(DEFAULT_PROBLEMS)
-            .description(DEFAULT_DESCRIPTION)
-            .solution(DEFAULT_SOLUTION)
-            .targetAudience(DEFAULT_TARGET_AUDIENCE)
-            .stakeHolder(DEFAULT_STAKE_HOLDER)
-            .slackChannel(DEFAULT_SLACK_CHANNEL)
-            .ministryProject(DEFAULT_MINISTRY_PROJECT);
+            .name(DEFAULT_NAME);
         return challenge;
     }
     /**
@@ -101,14 +73,7 @@ public class ChallengeResourceIT {
      */
     public static Challenge createUpdatedEntity(EntityManager em) {
         Challenge challenge = new Challenge()
-            .name(UPDATED_NAME)
-            .problems(UPDATED_PROBLEMS)
-            .description(UPDATED_DESCRIPTION)
-            .solution(UPDATED_SOLUTION)
-            .targetAudience(UPDATED_TARGET_AUDIENCE)
-            .stakeHolder(UPDATED_STAKE_HOLDER)
-            .slackChannel(UPDATED_SLACK_CHANNEL)
-            .ministryProject(UPDATED_MINISTRY_PROJECT);
+            .name(UPDATED_NAME);
         return challenge;
     }
 
@@ -133,13 +98,6 @@ public class ChallengeResourceIT {
         assertThat(challengeList).hasSize(databaseSizeBeforeCreate + 1);
         Challenge testChallenge = challengeList.get(challengeList.size() - 1);
         assertThat(testChallenge.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testChallenge.getProblems()).isEqualTo(DEFAULT_PROBLEMS);
-        assertThat(testChallenge.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testChallenge.getSolution()).isEqualTo(DEFAULT_SOLUTION);
-        assertThat(testChallenge.getTargetAudience()).isEqualTo(DEFAULT_TARGET_AUDIENCE);
-        assertThat(testChallenge.getStakeHolder()).isEqualTo(DEFAULT_STAKE_HOLDER);
-        assertThat(testChallenge.getSlackChannel()).isEqualTo(DEFAULT_SLACK_CHANNEL);
-        assertThat(testChallenge.isMinistryProject()).isEqualTo(DEFAULT_MINISTRY_PROJECT);
     }
 
     @Test
@@ -182,42 +140,6 @@ public class ChallengeResourceIT {
 
     @Test
     @Transactional
-    public void checkProblemsIsRequired() throws Exception {
-        int databaseSizeBeforeTest = challengeRepository.findAll().size();
-        // set the field null
-        challenge.setProblems(null);
-
-        // Create the Challenge, which fails.
-
-        restChallengeMockMvc.perform(post("/api/challenges")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(challenge)))
-            .andExpect(status().isBadRequest());
-
-        List<Challenge> challengeList = challengeRepository.findAll();
-        assertThat(challengeList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkDescriptionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = challengeRepository.findAll().size();
-        // set the field null
-        challenge.setDescription(null);
-
-        // Create the Challenge, which fails.
-
-        restChallengeMockMvc.perform(post("/api/challenges")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(challenge)))
-            .andExpect(status().isBadRequest());
-
-        List<Challenge> challengeList = challengeRepository.findAll();
-        assertThat(challengeList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllChallenges() throws Exception {
         // Initialize the database
         challengeRepository.saveAndFlush(challenge);
@@ -227,14 +149,7 @@ public class ChallengeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(challenge.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].problems").value(hasItem(DEFAULT_PROBLEMS)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].solution").value(hasItem(DEFAULT_SOLUTION)))
-            .andExpect(jsonPath("$.[*].targetAudience").value(hasItem(DEFAULT_TARGET_AUDIENCE)))
-            .andExpect(jsonPath("$.[*].stakeHolder").value(hasItem(DEFAULT_STAKE_HOLDER)))
-            .andExpect(jsonPath("$.[*].slackChannel").value(hasItem(DEFAULT_SLACK_CHANNEL)))
-            .andExpect(jsonPath("$.[*].ministryProject").value(hasItem(DEFAULT_MINISTRY_PROJECT.booleanValue())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -270,14 +185,7 @@ public class ChallengeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(challenge.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.problems").value(DEFAULT_PROBLEMS))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.solution").value(DEFAULT_SOLUTION))
-            .andExpect(jsonPath("$.targetAudience").value(DEFAULT_TARGET_AUDIENCE))
-            .andExpect(jsonPath("$.stakeHolder").value(DEFAULT_STAKE_HOLDER))
-            .andExpect(jsonPath("$.slackChannel").value(DEFAULT_SLACK_CHANNEL))
-            .andExpect(jsonPath("$.ministryProject").value(DEFAULT_MINISTRY_PROJECT.booleanValue()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
     }
 
     @Test
@@ -301,14 +209,7 @@ public class ChallengeResourceIT {
         // Disconnect from session so that the updates on updatedChallenge are not directly saved in db
         em.detach(updatedChallenge);
         updatedChallenge
-            .name(UPDATED_NAME)
-            .problems(UPDATED_PROBLEMS)
-            .description(UPDATED_DESCRIPTION)
-            .solution(UPDATED_SOLUTION)
-            .targetAudience(UPDATED_TARGET_AUDIENCE)
-            .stakeHolder(UPDATED_STAKE_HOLDER)
-            .slackChannel(UPDATED_SLACK_CHANNEL)
-            .ministryProject(UPDATED_MINISTRY_PROJECT);
+            .name(UPDATED_NAME);
 
         restChallengeMockMvc.perform(put("/api/challenges")
             .contentType(MediaType.APPLICATION_JSON)
@@ -320,13 +221,6 @@ public class ChallengeResourceIT {
         assertThat(challengeList).hasSize(databaseSizeBeforeUpdate);
         Challenge testChallenge = challengeList.get(challengeList.size() - 1);
         assertThat(testChallenge.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testChallenge.getProblems()).isEqualTo(UPDATED_PROBLEMS);
-        assertThat(testChallenge.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testChallenge.getSolution()).isEqualTo(UPDATED_SOLUTION);
-        assertThat(testChallenge.getTargetAudience()).isEqualTo(UPDATED_TARGET_AUDIENCE);
-        assertThat(testChallenge.getStakeHolder()).isEqualTo(UPDATED_STAKE_HOLDER);
-        assertThat(testChallenge.getSlackChannel()).isEqualTo(UPDATED_SLACK_CHANNEL);
-        assertThat(testChallenge.isMinistryProject()).isEqualTo(UPDATED_MINISTRY_PROJECT);
     }
 
     @Test

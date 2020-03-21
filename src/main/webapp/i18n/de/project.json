@@ -22,7 +22,7 @@
       "email": "Email",
       "description": "Description",
       "image": "Image",
-      "user": "User",
+      "userProfile": "User Profile",
       "skill": "Skill",
       "task": "Task",
       "idea": "Idea"

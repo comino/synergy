@@ -60,23 +60,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label jhiTranslate="wirvsvirusApp.project.user" for="field_users">User</label>
-                    <select class="form-control" id="field_users" multiple name="users" formControlName="users">
-                        <option [ngValue]="getSelected(editForm.get('users')!.value, userOption)" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    <label jhiTranslate="wirvsvirusApp.project.userProfile" for="field_userProfiles">User Profile</label>
+                    <select class="form-control" id="field_userProfiles" multiple name="userProfiles" formControlName="userProfiles">
+                        <option [ngValue]="getSelected(editForm.get('userProfiles')!.value, userProfileOption)" *ngFor="let userProfileOption of userprofiles; trackBy: trackById">{{ userProfileOption.github }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label jhiTranslate="wirvsvirusApp.project.skill" for="field_skills">Skill</label>
                     <select class="form-control" id="field_skills" multiple name="skills" formControlName="skills">
-                        <option [ngValue]="getSelected(editForm.get('skills')!.value, skillOption)" *ngFor="let skillOption of skills; trackBy: trackById">{{ skillOption.id }}</option>
+                        <option [ngValue]="getSelected(editForm.get('skills')!.value, skillOption)" *ngFor="let skillOption of skills; trackBy: trackById">{{ skillOption.name }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label jhiTranslate="wirvsvirusApp.project.task" for="field_tasks">Task</label>
                     <select class="form-control" id="field_tasks" multiple name="tasks" formControlName="tasks">
-                        <option [ngValue]="getSelected(editForm.get('tasks')!.value, taskOption)" *ngFor="let taskOption of tasks; trackBy: trackById">{{ taskOption.id }}</option>
+                        <option [ngValue]="getSelected(editForm.get('tasks')!.value, taskOption)" *ngFor="let taskOption of tasks; trackBy: trackById">{{ taskOption.name }}</option>
                     </select>
                 </div>
 
@@ -84,7 +84,7 @@
                     <label class="form-control-label" jhiTranslate="wirvsvirusApp.project.idea" for="field_idea">Idea</label>
                     <select class="form-control" id="field_idea" name="idea" formControlName="idea">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="ideaOption.id === editForm.get('idea')!.value?.id ? editForm.get('idea')!.value : ideaOption" *ngFor="let ideaOption of ideas; trackBy: trackById">{{ ideaOption.id }}</option>
+                        <option [ngValue]="ideaOption.id === editForm.get('idea')!.value?.id ? editForm.get('idea')!.value : ideaOption" *ngFor="let ideaOption of ideas; trackBy: trackById">{{ ideaOption.title }}</option>
                     </select>
                 </div>
             </div>

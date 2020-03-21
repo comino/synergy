@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label jhiTranslate="wirvsvirusApp.task.skill" for="field_skills">Skill</label>
                     <select class="form-control" id="field_skills" multiple name="skills" formControlName="skills">
-                        <option [ngValue]="getSelected(editForm.get('skills')!.value, skillOption)" *ngFor="let skillOption of skills; trackBy: trackById">{{ skillOption.id }}</option>
+                        <option [ngValue]="getSelected(editForm.get('skills')!.value, skillOption)" *ngFor="let skillOption of skills; trackBy: trackById">{{ skillOption.name }}</option>
                     </select>
                 </div>
 
@@ -34,7 +34,7 @@
                     <label class="form-control-label" jhiTranslate="wirvsvirusApp.task.userProfile" for="field_userProfile">User Profile</label>
                     <select class="form-control" id="field_userProfile" name="userProfile" formControlName="userProfile">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="userProfileOption.id === editForm.get('userProfile')!.value?.id ? editForm.get('userProfile')!.value : userProfileOption" *ngFor="let userProfileOption of userprofiles; trackBy: trackById">{{ userProfileOption.id }}</option>
+                        <option [ngValue]="userProfileOption.id === editForm.get('userProfile')!.value?.id ? editForm.get('userProfile')!.value : userProfileOption" *ngFor="let userProfileOption of userprofiles; trackBy: trackById">{{ userProfileOption.github }}</option>
                     </select>
                 </div>
             </div>

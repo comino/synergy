@@ -17,13 +17,6 @@
         "title": "Challenge"
       },
       "name": "Name",
-      "problems": "Problems",
-      "description": "Description",
-      "solution": "Solution",
-      "targetAudience": "Target Audience",
-      "stakeHolder": "Stake Holder",
-      "slackChannel": "Slack Channel",
-      "ministryProject": "Ministry Project",
       "idea": "Idea",
       "category": "Category"
     }

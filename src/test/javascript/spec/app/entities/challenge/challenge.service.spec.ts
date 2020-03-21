@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(ChallengeService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Challenge(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false);
+      elemDefault = new Challenge(0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -54,14 +54,7 @@ describe('Service Tests', () => {
       it('should update a Challenge', () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB',
-            problems: 'BBBBBB',
-            description: 'BBBBBB',
-            solution: 'BBBBBB',
-            targetAudience: 'BBBBBB',
-            stakeHolder: 'BBBBBB',
-            slackChannel: 'BBBBBB',
-            ministryProject: true
+            name: 'BBBBBB'
           },
           elemDefault
         );
@@ -78,14 +71,7 @@ describe('Service Tests', () => {
       it('should return a list of Challenge', () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB',
-            problems: 'BBBBBB',
-            description: 'BBBBBB',
-            solution: 'BBBBBB',
-            targetAudience: 'BBBBBB',
-            stakeHolder: 'BBBBBB',
-            slackChannel: 'BBBBBB',
-            ministryProject: true
+            name: 'BBBBBB'
           },
           elemDefault
         );

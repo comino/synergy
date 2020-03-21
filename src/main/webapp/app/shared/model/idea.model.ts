@@ -3,8 +3,14 @@ import { IChallenge } from 'app/shared/model/challenge.model';
 
 export interface IIdea {
   id?: number;
-  name?: string;
+  title?: string;
+  problems?: string;
   description?: string;
+  solution?: string;
+  targetAudience?: string;
+  stakeHolder?: string;
+  slackChannel?: string;
+  ministryProject?: boolean;
   projects?: IProject[];
   challenge?: IChallenge;
 }
@@ -12,9 +18,17 @@ export interface IIdea {
 export class Idea implements IIdea {
   constructor(
     public id?: number,
-    public name?: string,
+    public title?: string,
+    public problems?: string,
     public description?: string,
+    public solution?: string,
+    public targetAudience?: string,
+    public stakeHolder?: string,
+    public slackChannel?: string,
+    public ministryProject?: boolean,
     public projects?: IProject[],
     public challenge?: IChallenge
-  ) {}
+  ) {
+    this.ministryProject = this.ministryProject || false;
+  }
 }

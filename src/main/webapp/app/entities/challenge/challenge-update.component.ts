@@ -21,13 +21,6 @@ export class ChallengeUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     name: [null, [Validators.required]],
-    problems: [null, [Validators.required]],
-    description: [null, [Validators.required]],
-    solution: [],
-    targetAudience: [],
-    stakeHolder: [],
-    slackChannel: [],
-    ministryProject: [],
     categories: []
   });
 
@@ -50,13 +43,6 @@ export class ChallengeUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: challenge.id,
       name: challenge.name,
-      problems: challenge.problems,
-      description: challenge.description,
-      solution: challenge.solution,
-      targetAudience: challenge.targetAudience,
-      stakeHolder: challenge.stakeHolder,
-      slackChannel: challenge.slackChannel,
-      ministryProject: challenge.ministryProject,
       categories: challenge.categories
     });
   }
@@ -80,13 +66,6 @@ export class ChallengeUpdateComponent implements OnInit {
       ...new Challenge(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      problems: this.editForm.get(['problems'])!.value,
-      description: this.editForm.get(['description'])!.value,
-      solution: this.editForm.get(['solution'])!.value,
-      targetAudience: this.editForm.get(['targetAudience'])!.value,
-      stakeHolder: this.editForm.get(['stakeHolder'])!.value,
-      slackChannel: this.editForm.get(['slackChannel'])!.value,
-      ministryProject: this.editForm.get(['ministryProject'])!.value,
       categories: this.editForm.get(['categories'])!.value
     };
   }

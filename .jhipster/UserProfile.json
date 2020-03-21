@@ -30,8 +30,16 @@
             "otherEntityName": "skill",
             "otherEntityRelationshipName": "userProfile",
             "relationshipName": "skill",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "userProfile",
+            "relationshipName": "project",
+            "otherEntityField": "name",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200320225800",

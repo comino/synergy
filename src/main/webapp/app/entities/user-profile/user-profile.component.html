@@ -40,7 +40,7 @@
                     </td>
                     <td>
                         <span *ngFor="let skill of userProfile.skills; let last = last">
-                            <a class="form-control-static" [routerLink]="['/skill', skill?.id, 'view']">{{ skill.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static" [routerLink]="['/skill', skill?.id, 'view']">{{ skill.name }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td class="text-right">

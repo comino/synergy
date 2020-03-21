@@ -9,8 +9,8 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IProject, Project } from 'app/shared/model/project.model';
 import { ProjectService } from './project.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
-import { IUser } from 'app/core/user/user.model';
-import { UserService } from 'app/core/user/user.service';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { ISkill } from 'app/shared/model/skill.model';
 import { SkillService } from 'app/entities/skill/skill.service';
 import { ITask } from 'app/shared/model/task.model';
@@ -18,9 +18,9 @@ import { TaskService } from 'app/entities/task/task.service';
 import { IIdea } from 'app/shared/model/idea.model';
 import { IdeaService } from 'app/entities/idea/idea.service';
 
-type SelectableEntity = IUser | ISkill | ITask | IIdea;
+type SelectableEntity = IUserProfile | ISkill | ITask | IIdea;
 
-type SelectableManyToManyEntity = IUser | ISkill | ITask;
+type SelectableManyToManyEntity = IUserProfile | ISkill | ITask;
 
 @Component({
   selector: 'jhi-project-update',
@@ -28,7 +28,7 @@ type SelectableManyToManyEntity = IUser | ISkill | ITask;
 })
 export class ProjectUpdateComponent implements OnInit {
   isSaving = false;
-  users: IUser[] = [];
+  userprofiles: IUserProfile[] = [];
   skills: ISkill[] = [];
   tasks: ITask[] = [];
   ideas: IIdea[] = [];
@@ -42,7 +42,7 @@ export class ProjectUpdateComponent implements OnInit {
     description: [],
     image: [],
     imageContentType: [],
-    users: [],
+    userProfiles: [],
     skills: [],
     tasks: [],
     idea: []
@@ -52,7 +52,7 @@ export class ProjectUpdateComponent implements OnInit {
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected projectService: ProjectService,
-    protected userService: UserService,
+    protected userProfileService: UserProfileService,
     protected skillService: SkillService,
     protected taskService: TaskService,
     protected ideaService: IdeaService,
@@ -65,7 +65,7 @@ export class ProjectUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ project }) => {
       this.updateForm(project);
 
-      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+      this.userProfileService.query().subscribe((res: HttpResponse<IUserProfile[]>) => (this.userprofiles = res.body || []));
 
       this.skillService.query().subscribe((res: HttpResponse<ISkill[]>) => (this.skills = res.body || []));
 
@@ -85,7 +85,7 @@ export class ProjectUpdateComponent implements OnInit {
       description: project.description,
       image: project.image,
       imageContentType: project.imageContentType,
-      users: project.users,
+      userProfiles: project.userProfiles,
       skills: project.skills,
       tasks: project.tasks,
       idea: project.idea
@@ -143,7 +143,7 @@ export class ProjectUpdateComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       imageContentType: this.editForm.get(['imageContentType'])!.value,
       image: this.editForm.get(['image'])!.value,
-      users: this.editForm.get(['users'])!.value,
+      userProfiles: this.editForm.get(['userProfiles'])!.value,
       skills: this.editForm.get(['skills'])!.value,
       tasks: this.editForm.get(['tasks'])!.value,
       idea: this.editForm.get(['idea'])!.value

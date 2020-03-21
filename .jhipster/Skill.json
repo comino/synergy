@@ -15,7 +15,7 @@
             "otherEntityName": "userProfile",
             "otherEntityRelationshipName": "skill",
             "relationshipName": "userProfile",
-            "otherEntityField": "id",
+            "otherEntityField": "github",
             "ownerSide": false
         },
         {
@@ -23,7 +23,7 @@
             "otherEntityName": "project",
             "otherEntityRelationshipName": "skill",
             "relationshipName": "project",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": false
         },
         {
@@ -31,7 +31,7 @@
             "otherEntityName": "task",
             "otherEntityRelationshipName": "skill",
             "relationshipName": "task",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": false
         }
     ],
